@@ -1,25 +1,3 @@
-const typeColors = {
-    grass: "#78c850",
-    fire: "#f08030",
-    water: "#6890f0",
-    bug: "#a8b820",
-    flying: "#a890f0",
-    normal: "#a8a878",
-    electric: "#f8d030",
-    ice: "#98d8d8",
-    fighting: "#c03028",
-    poison: "#a040a0",
-    ground: "#e0c068",
-    psychic: "#f85888",
-    rock: "#b8a038",
-    ghost: "#705898",
-    dragon: "#7038f8",
-    dark: "#705848",
-    steel: "#b8b8d0",
-    fairy: "#f0b6bc",
-    stellar: "#35ace7",
-};
-
 const pokedexContainer = document.getElementById('pokedex-container');
 
 async function loadPokemon() {
