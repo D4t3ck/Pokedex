@@ -2,26 +2,51 @@
   --mainFont: system-ui, sans-serif;
   --handFont: "Segoe Print", sans-serif;
 }
-
-html {
-  scroll-behavior: smooth;
-}
 body {
   margin: 0;
   padding: 0;
   font-family: var();
+  background-color: whitesmoke;
+  box-sizing: border-box;
 }
+/********** **********/
+
 .pokedex-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-
 .pokemon-card {
-    border: 1px solid #ddd;
+    border: 1px solid black;
     padding: 10px;
-    margin: 10px;
+    margin: 12px 0px 12px 0px;
     text-align: center;
-    width: 200px;
+    width: 250px;
+    border-radius: 10px;
     font-family: var(--mainFont);
+}
+
+
+
+/********** LOAD MORE **********/
+
+.load_more_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 24px;
+}
+.load_more_form button {
+  padding: 16px;
+  border-radius: 5px;
+  font-family: var(--mainFont);
+  font-size: 24px;
+  font-weight: 600;
+  background-color: #30309a;
+  color: #ffce31;
+}
+.load_more_form button:hover {
+  cursor: pointer;
+  background-color: #ffce31;
+  color: #30309a;
 }

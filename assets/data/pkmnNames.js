@@ -152,4 +152,4 @@ let pkmnNames = [
   { mew: "Mew" },
 ];
 
-
+/* console.log(pkmnNames); */
