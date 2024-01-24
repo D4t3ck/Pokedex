@@ -9,24 +9,80 @@ body {
   background-color: whitesmoke;
   box-sizing: border-box;
 }
+
+/* div,p {
+  border: solid red 1px;
+} */
+
 /********** **********/
 
 .pokedex-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 12px; 
 }
-.pokemon-card {
-    border: 1px solid black;
-    padding: 10px;
-    margin: 12px 0px 12px 0px;
-    text-align: center;
-    width: 250px;
-    border-radius: 10px;
-    font-family: var(--mainFont);
+.pkmn_card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 12px 0px 12px 0px;
+  text-align: center;
+  width: 300px;
+  border-radius: 10px;
+  color: whitesmoke;
+  font-size: 32px;
+  font-family: var(--mainFont);
+  box-sizing: border-box;
+  box-shadow: inset 10px 10px 25px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 300ms ease-in-out 100ms;
 }
-
-
+.pkmn_card:hover {
+  cursor: pointer;
+  transform: translate(0px, 0px) scale(1.2, 1.2);
+  border: 3px solid black;
+}
+.pkmn_img {
+  width: 75%;
+}
+.pkmn_info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+.pkmn_id {
+  font-size: 32px;
+  font-weight: 500;
+}
+.pkmn_info :nth-child(2) {
+  color: whitesmoke;
+}
+.pkmn_name {
+  font-size: 32px;
+  font-weight: 500;
+}
+.pkmn_types {
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+.pkmn_types :first-child {
+  border: solid 1px black;
+  border-radius: 5px;
+  padding: 4px;
+  width: 80px;
+  box-shadow: inset 10px 10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+.pkmn_types :nth-child(2) {
+  border: solid 1px black;
+  border-radius: 5px;
+  padding: 4px;
+  width: 80px;
+  box-shadow: inset 10px 10px 10px 10px rgba(0, 0, 0, 0.1);
+}
 
 /********** LOAD MORE **********/
 

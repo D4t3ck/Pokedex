@@ -1,91 +1,80 @@
-let pokedexContainer = document.getElementById("pokedex-container");
+let offset = 0;
+let limit = 50;
 
 function init() {
   includeHTML();
-  loadPokemon();
+  loadPokemon(limit);
 }
 
-async function loadPokemon() {
-  let url = "https://pokeapi.co/api/v2/pokemon/?limit=151";
+async function loadMorePokemon(event) {
+  event.preventDefault();
+
+  offset += limit;
+  await loadPokemon(limit);
+}
+
+
+async function loadPokemon(numberToLoad) {
+  let url = `https://pokeapi.co/api/v2/pokemon/?limit=${numberToLoad}&offset=${offset}`;
   let response = await fetch(url);
   let data = await response.json();
 
-  // Sortiere die Pokémon-Daten nach ihrer Nummer
-  let sortedList = sortPkmnByNumber(data.results);
-
-  for (let i = 0; i < sortedList.length; i++) {
-    let pokemon = sortedList[i];
+  for (let i = 0; i < data.results.length; i++) {
+    let pokemon = data.results[i];
     let response = await fetch(pokemon.url);
-    let pokemonData = await response.json();
-    renderPokemonCard(pokemonData);
+    let pkmnData = await response.json();
+    renderPokemonCard(pkmnData);
   }
 }
 
-function sortPkmnByNumber(pokemonList) {
-  return pokemonList.sort(
-    (a, b) => a.url.split("/").slice(-2, -1) - b.url.split("/").slice(-2, -1)
-  );
-}
+///////////////////////////////////////////////
 
-/* async function getPokemonData(url) {
-  let response = await fetch(url);
-  return await response.json();
-} */
+function renderPokemonCard(pkmn) {
+  let pokedexContainer = document.getElementById("pokedex-container");
+  let capname = pkmn.name.charAt(0).toUpperCase() + pkmn.name.slice(1);
 
-function renderPokemonCard(pokemon) {
-  // Finde den deutschen Namen im Array
-  let germanNameObj = pkmnNames.find(
-    (item) => Object.keys(item)[0] === pokemon.name
-  );
-
-  // Verwende den deutschen Namen oder den englischen Namen, wenn kein deutscher Name gefunden wurde
-  let germanName = germanNameObj
-    ? Object.values(germanNameObj)[0]
-    : pokemon.name;
-  let capitalizedGermanName =
-    germanName.charAt(0).toUpperCase() + germanName.slice(1);
-
-  // Finde den primären Typ des Pokémon (falls vorhanden)
-  let primaryType = pokemon.types.length > 0 ? pokemon.types[0].type.name : "";
-
-  // Verwende eine Funktion, um die Hintergrundfarbe basierend auf dem Typ zu bestimmen
+  let primaryType = pkmn.types.length > 0 ? pkmn.types[0].type.name : "";
   let backgroundColor = typeColors[primaryType] || "#CCCCCC";
 
-  pokedexContainer.innerHTML += overviewContent(
-    pokemon,
-    germanName,
-    capitalizedGermanName,
-    backgroundColor
-  );
+  pokedexContainer.innerHTML += overviewContent(pkmn, capname, backgroundColor);
 }
 
 ////////// GENERIERTES HTML //////////
 
-function overviewContent(
-  pokemon,
-  germanName,
-  capitalizedGermanName,
-  backgroundColor
-) {
+function overviewContent(pkmn, capName, backgroundColor) {
+  let primaryType = pkmn.types.length > 0 ? pkmn.types[0].type.name : "";
+  let secondaryType = pkmn.types.length > 1 ? pkmn.types[1].type.name : "";
+
   return /* html */ `
-    <div class="pokemon-card" style="background-color: ${backgroundColor};">
-      <img src="${pokemon.sprites.front_default}" alt="${germanName}">
-      <p>${capitalizedGermanName}</p>
-      <p>Nr. ${pokemon.id}</p>
+    <div class="pkmn_card" style="background-color: ${backgroundColor};">
+
+        <img class="pkmn_img" src="${
+          pkmn.sprites.front_default}" alt="${capName}">
+        <div class="pkmn_info">
+          <p class="pkmn_id">#${pkmn.id}</p>
+          <p>|</p>
+          <p class="pkmn_name">${capName}</p>
+        </div>
+        <div class="pkmn_types">
+          <p style="background-color: ${backgroundColor}">${primaryType}</p>
+          ${secondaryType ? `<p>${secondaryType}</p>` : ""}
+        </div>
     </div>
   `;
 }
 
+////////// W3 INCLUDE HTML //////////
+
 async function includeHTML() {
-    let includeElements = document.querySelectorAll('[w3-include-html]');
-    for (let i = 0; i < includeElements.length; i++) {
-        const element = includeElements[i];
-        file = element.getAttribute('w3-include-html'); // 'includes/header.html'
-        let resp = await fetch(file);
-        if (resp.ok) {
-            element.innerHTML = await resp.text();
-        } else {
-            element.innerHTML = 'Page not found';
-        }
+  let includeElements = document.querySelectorAll("[w3-include-html]");
+  for (let i = 0; i < includeElements.length; i++) {
+    const element = includeElements[i];
+    file = element.getAttribute("w3-include-html"); // 'includes/header.html'
+    let resp = await fetch(file);
+    if (resp.ok) {
+      element.innerHTML = await resp.text();
+    } else {
+      element.innerHTML = "Page not found";
     }
+  }
 }
