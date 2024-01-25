@@ -4,6 +4,7 @@ let limit = 50;
 function init() {
   includeHTML();
   loadPokemon(limit);
+  myModal();
 }
 
 async function loadMorePokemon(event) {
@@ -12,7 +13,6 @@ async function loadMorePokemon(event) {
   offset += limit;
   await loadPokemon(limit);
 }
-
 
 async function loadPokemon(numberToLoad) {
   let url = `https://pokeapi.co/api/v2/pokemon/?limit=${numberToLoad}&offset=${offset}`;
@@ -29,39 +29,61 @@ async function loadPokemon(numberToLoad) {
 
 ///////////////////////////////////////////////
 
-function renderPokemonCard(pkmn) {
-  let pokedexContainer = document.getElementById("pokedex-container");
-  let capname = pkmn.name.charAt(0).toUpperCase() + pkmn.name.slice(1);
 
+function renderPokemonCard(pkmn) {
+  let pokedexContainer = document.getElementById("pokedexContainer");
+  let capname = pkmn.name.charAt(0).toUpperCase() + pkmn.name.slice(1);
   let primaryType = pkmn.types.length > 0 ? pkmn.types[0].type.name : "";
   let backgroundColor = typeColors[primaryType] || "#CCCCCC";
 
   pokedexContainer.innerHTML += overviewContent(pkmn, capname, backgroundColor);
 }
 
-////////// GENERIERTES HTML //////////
+function capitalizeTypes(pkmn) {
+  let primaryType =
+    pkmn.types.length > 0
+      ? pkmn.types[0].type.name.charAt(0).toUpperCase() +
+        pkmn.types[0].type.name.slice(1)
+      : "";
+  let secondaryType =
+    pkmn.types.length > 1
+      ? pkmn.types[1].type.name.charAt(0).toUpperCase() +
+        pkmn.types[1].type.name.slice(1)
+      : "";
 
-function overviewContent(pkmn, capName, backgroundColor) {
-  let primaryType = pkmn.types.length > 0 ? pkmn.types[0].type.name : "";
-  let secondaryType = pkmn.types.length > 1 ? pkmn.types[1].type.name : "";
-
-  return /* html */ `
-    <div class="pkmn_card" style="background-color: ${backgroundColor};">
-
-        <img class="pkmn_img" src="${
-          pkmn.sprites.front_default}" alt="${capName}">
-        <div class="pkmn_info">
-          <p class="pkmn_id">#${pkmn.id}</p>
-          <p>|</p>
-          <p class="pkmn_name">${capName}</p>
-        </div>
-        <div class="pkmn_types">
-          <p style="background-color: ${backgroundColor}">${primaryType}</p>
-          ${secondaryType ? `<p>${secondaryType}</p>` : ""}
-        </div>
-    </div>
-  `;
+  return { primaryType, secondaryType };
 }
+
+function renderModal() {
+  let modal = document.getElementById('myModal');
+  
+}
+
+function myModal() {
+  let modal = document.getElementById("myModal");
+
+  let btn = document.getElementById("pokedexContainer");
+
+  let span = document.getElementsByClassName("close")[0];
+
+  btn.onclick = () => {
+    modal.style.display = "block";
+  };
+
+  span.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  window.onclick = (event) => {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+}
+
+
+
+
 
 ////////// W3 INCLUDE HTML //////////
 
