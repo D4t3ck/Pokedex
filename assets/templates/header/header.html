@@ -1,10 +1,9 @@
 <header class="header">
-  <section class="header_container">
-    <div><img class="logo_img" src="/assets/img/Pokédex_logo.png" alt="App Logo" />
-    </div>
-    <form class="search" action="/suche" method="get">
-        <input type="text" id="suchbegriff" name="q" placeholder="Finde ein Pokemon" required>
-        <button type="submit">Suchen</button>
-    </form>
-  </section>
+    
+  <img class="logo_img" src="./assets/img/Pokédex_logo.png" alt="App Logo" />
+
+  <form action="" onsubmit="search(); return false">
+    <input type="text" id="search" placeholder="Finde ein Pokemon" required />
+    <button>&#x1F50D;</button>
+  </form>
 </header>

@@ -1,0 +1,33 @@
+:root {
+    --mainFont: system-ui, sans-serif;
+    --backgroundColor: #f5f5f5;
+    --lightgray: #d3d3d3;
+    --mainColor: #e63b3b;
+    --buttonColor: #30309a;
+    --buttonFontColor: #ffce31;
+  }
+
+  @mixin flexbox($fd: row, $jc: center, $ai: center, $g: 0px) {
+    display: flex;
+    flex-direction: $fd;
+    justify-content: $jc;
+    align-items: $ai;
+    gap: $g;
+  }
+
+  @mixin box($width, $height: $width) {
+    width: $width;
+    height: $height;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: var(--mainFont);
+    background-color: var(--lightgray);
+  }
+  

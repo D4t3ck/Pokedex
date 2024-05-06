@@ -3,42 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pokédex</title>
+    <title>PokéDex</title>
 
-    <link
-      rel="shortcut icon"
-      href="./assets/img/favicon.ico"
-      type="image/x-icon"
-    />
+    <script src="./script.js"></script>
+    <script src="./js/loadData.js"></script>
+    <script src="./js/pkmnTypes.js"></script>
+    <script src="./js/includeData.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./assets/templates/header/header.css" />
+    <link rel="stylesheet" href="./assets/templates/footer/footer.css" />
+    <link
+      rel="shortcut icon"
+      href="./assets/img/fav_icon.png"
+      type="image/x-icon"
+    />
   </head>
+
   <body onload="init()">
     <div w3-include-html="./assets/templates/header/header.html"></div>
 
-    <main>
-      <section>
-        <div id="pokedexContainer" class="pokedex_container">
-          <!-- Lorem, ipsum. -->
-        </div>
-        <form class="load_more_form" action="#">
-          <button id="loadMore" onclick="loadMorePokemon(event)">
-            Lade mehr
-          </button>
-        </form>
-      </section>
-
-      <div id="myModal" class="modal">
-      
-        <!-- <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>Some text in the Modal..</p>
-        </div> -->
-      </div>
-    </main>
-
-    <script src="./script.js"></script>
-    <script src="./assets/data/pkmnTypes.js"></script>
-    <script src="./html.js"></script>
+    <div w3-include-html="./assets/templates/footer/footer.html"></div>
   </body>
 </html>
