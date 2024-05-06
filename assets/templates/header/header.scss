@@ -1,26 +1,26 @@
 @import "../../../style.scss";
 
 .header {
-  @include flexbox;
-  @include box(100%, 100px);
+  @include flexbox($jc: space-between);
+  @include box(100%, auto);
+  /* flex-direction: column; */
   margin-bottom: 1.5rem;
+  padding: 1rem;
   background-color: var(--mainColor);
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 5);
   box-shadow: 0px 5px 10px 0px rgb(0, 0, 0, 0.4);
 
   > img {
-    margin-left: 1rem;
-    height: 5rem;
+    height: 4rem;
   }
   
   form {
     @include flexbox;
-    margin-left: auto;
+    margin-top: 20px;
     margin-right: 1rem;
+    padding: 0 1rem 0 1rem;
     border: 1px solid var(--backgroundColor);
     border-radius: 10px;
-    padding: 0 1rem 0 1rem;
-    margin-top: 20px;
 
     input {
       height: 1.5rem;
@@ -56,31 +56,14 @@
 
 /********** MEDIAQUERY ***********/
 
-@media (max-width: 700px) {
-  .logo_img {
-    width: 300px;
-  }
-
-  .header_container {
-    align-items: center;
+@media (max-width: 500px) {
+  .header {
     flex-direction: column;
-    gap: 12px;
-  }
-  .search {
-    margin: auto;
+
+    form {
+      margin-right: 0;
+    }
   }
 }
 
-/* @media (max-width: 569px) {
-  .logo_img {
-    width: 250px;
-    margin: 12px;
-  }
-  .header_container {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .search {
-    margin: auto;
-  }
-} */
+
