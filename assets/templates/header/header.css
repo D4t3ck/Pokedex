@@ -13,6 +13,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scrollbar-width: thin;
+}
+
 body {
   font-family: var(--mainFont);
   background-color: var(--backgroundColor);
@@ -26,6 +30,11 @@ main {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+}
+
+.pkmn_card {
+  border: 1px dashed blue;
+  width: 240px;
 }
 
 .btn_container {

@@ -1,5 +1,5 @@
 let pkmnDataArray = [];
-let count = 51;
+let count = 52;
 let startCount = 1;
 
 async function loadMore() {
@@ -19,31 +19,29 @@ async function renderPkmnData() {
     let pkmnData = await response.json();
     pkmnDataArray.push(pkmnData);
 
-    let { primaryType, secondaryType } = capitalizeTypes(pkmnData);
+    content.innerHTML += /* html */ `
+    <section class="pkmn_card_container"
+    style="background-color: ${pkmnColor(pkmnData, 0)}"
+    >
+      <div class="pkmn_id">${pkmnId(pkmnData)}</div>
+      <div class="pkmn_card">
 
+      <span>${pkmnName(pkmnData)}</span>
 
-    content.innerHTML += `
-    <section class="pkmn_card" style="background-color: ${pkmnColor(pkmnData, 0)}" onclick="openPkmnCard(${i})">
-    <div class="pkmn_id">${pkmnId(pkmnData)}</div>
-    <div class="pkmn_info_container">
-        <div class="pkmn_info">
-            <p>${pkmnName(pkmnData)}</p>
-            <div style="background-color: ${pkmnColor(
-              pkmnData,
-              0
-            )}">${pkmnType1(pkmnData)}</div>
-            ${
-              pkmnType2(pkmnData)
-                ? `<div style="background-color: ${pkmnColor(
-                    pkmnData,
-                    1
-                  )}">${secondaryType}</div>`
-                : ""
-            }
-        </div>
-        <img src="${pkmnImg(pkmnData)}" alt="Pokemon">
-    </div>
-</section>`;
+      <div class="type1" style="background-color: ${pkmnColor(pkmnData, 0)}">
+      ${pkmnType1(pkmnData)}
+      </div>
+      
+      <div class="type2" style="background-color: ${pkmnColor(pkmnData, 1)}">
+      ${pkmnType2(pkmnData)}
+      </div>
+
+      <img src="${pkmnImg(pkmnData)}" alt="Pokemon">
+    
+      </div>
+
+    </section>
+    `;
   }
 }
 
@@ -76,7 +74,7 @@ let pkmnColor = (pkmnData, typeNumber) => {
   let type = pkmnData.types[typeNumber]
     ? pkmnData.types[typeNumber].type.name
     : "";
-  let backgroundColor = typeColors2[type] || "#CCCCCC";
+  let backgroundColor = typeColors[type] || "#CCCCCC";
   return backgroundColor;
 };
 
