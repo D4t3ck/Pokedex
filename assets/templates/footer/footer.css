@@ -18,6 +18,19 @@ body {
   background-color: var(--backgroundColor);
 }
 
+.content_container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.btn_container {
+  border: 1px dashed red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 footer {
   display: flex;
   flex-direction: row;

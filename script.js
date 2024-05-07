@@ -1,4 +1,4 @@
 function init() {
   includeHTML();
-  loadPokemon();
+  renderPkmnData()
 }

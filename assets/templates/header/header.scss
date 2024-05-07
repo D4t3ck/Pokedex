@@ -3,8 +3,6 @@
 .header {
   @include flexbox($jc: space-between);
   @include box(100%, auto);
-  /* flex-direction: column; */
-  margin-bottom: 1.5rem;
   padding: 1rem;
   background-color: var(--mainColor);
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 5);

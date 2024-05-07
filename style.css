@@ -13,7 +13,28 @@
   box-sizing: border-box;
 }
 
+html {
+  scrollbar-width: thin;
+}
+
 body {
   font-family: var(--mainFont);
   background-color: var(--backgroundColor);
+}
+
+main {
+  padding: 1rem;
+}
+
+.content_container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.btn_container {
+  border: 1px dashed red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=style.css.map */
