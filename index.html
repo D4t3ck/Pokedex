@@ -26,8 +26,24 @@
     <div w3-include-html="./assets/templates/header/header.html"></div>
 
     <main>
+      <div class="arrow_down_container">
+        <img
+          src="./assets/img/arrow_up.png"
+          alt="Arrow Down"
+          onclick="scrollDown()"
+        />
+      </div>
       <div class="content_container" id="content"></div>
-      <div class="btn_container"><button class="load_btn">Load more</button></div>
+      <div class="btn_container">
+        <div class="load_btn" onclick="loadMore()">Load more</div>
+      </div>
+      <div class="arrow_up_container">
+        <img
+          src="./assets/img/arrow_up.png"
+          alt="Arrow Up"
+          onclick="scrollUp()"
+        />
+      </div>
     </main>
 
     <div w3-include-html="./assets/templates/footer/footer.html"></div>

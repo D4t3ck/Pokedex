@@ -2,16 +2,8 @@ let pkmnDataArray = [];
 let count = 51;
 let startCount = 1;
 
-async function loadMore() {
-  count += 50;
-  startCount += 50;
-  console.log("aktueller Count", count);
-  await renderPkmnData();
-}
-
 async function renderPkmnData() {
   let content = document.getElementById("content");
-  content.innerHTML = "";
 
   for (let i = startCount; i < count; i++) {
     let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
@@ -21,6 +13,12 @@ async function renderPkmnData() {
 
     content.innerHTML += pkmnCard(pkmnData);
   }
+}
+
+async function loadMore() {
+  count += 50;
+  startCount += 50;
+  renderPkmnData();
 }
 
 // HILFSFUNKTIONEN //
