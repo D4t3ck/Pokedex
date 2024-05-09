@@ -36,6 +36,10 @@ body {
   background-color: var(--backgroundColor);
 }
 
+.d_none {
+  display: none;
+}
+
 main {
   @include flexbox($fd: column, $g: 1rem);
   padding: 1rem;
@@ -160,5 +164,32 @@ main {
     &:hover {
       cursor: pointer;
     }
+  }
+}
+
+#pkmnCard {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  width: 100%;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  .card_container {
+    border: 2px dashed red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 90vh;
+    background-color: var(--backgroundColor);
   }
 }

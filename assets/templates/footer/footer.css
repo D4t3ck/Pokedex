@@ -28,6 +28,8 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
   padding: 1rem;
 }
@@ -53,7 +55,6 @@ main {
   justify-content: space-evenly;
   flex-wrap: wrap;
   margin: 0.75rem;
-  /* margin-bottom: 2rem; */
 }
 
 .pkmn_card {
@@ -139,7 +140,6 @@ main {
   justify-content: center;
   align-items: center;
   gap: 0px;
-  /* margin-bottom: 2rem; */
 }
 .btn_container .load_btn {
   padding: 1rem;

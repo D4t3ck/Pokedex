@@ -1,18 +1,24 @@
 function init() {
   includeHTML();
-  renderPkmnData()
+  renderPkmnData();
 }
 
 function scrollDown() {
   window.scrollTo({
     top: document.body.scrollHeight,
-    behavior: 'smooth'
+    behavior: "smooth",
   });
 }
 
 function scrollUp() {
   window.scrollTo({
     top: 0,
-    behavior: 'smooth'
+    behavior: "smooth",
   });
+}
+
+function closeCard() {
+  let card = document.getElementById("pkmnCard");
+  card.style.display = "none";
+  card.innerHTML = "";
 }

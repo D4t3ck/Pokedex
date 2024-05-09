@@ -1,4 +1,5 @@
 let pkmnDataArray = [];
+let currentCard = [];
 let count = 51;
 let startCount = 1;
 
@@ -11,14 +12,31 @@ async function renderPkmnData() {
     let pkmnData = await response.json();
     pkmnDataArray.push(pkmnData);
 
-    content.innerHTML += pkmnCard(pkmnData);
+    content.innerHTML += pkmnCard(pkmnData, i);
   }
+}
+
+async function openCard(i) {
+  let card = document.getElementById("pkmnCard");
+  card.style.display = "flex";
+
+  let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+  let response = await fetch(url);
+  currentCard = await response.json();
+
+  card.innerHTML += /* html */ `
+    <section class="card_container" onclick="doNotClose(event)">
+      
+    <h2>${pkmnName(currentCard)}</h2>
+    <div>${pkmnId(currentCard)}</div>
+    </section>
+    `;
 }
 
 async function loadMore() {
   count += 50;
   startCount += 50;
-  renderPkmnData();
+  await renderPkmnData();
 }
 
 // HILFSFUNKTIONEN //
@@ -57,3 +75,7 @@ let pkmnTypes = (pkmnData) => {
 let pkmnImg = (pkmnData) => {
   return pkmnData.sprites.front_default;
 };
+
+function doNotClose(e) {
+  e.stopPropagation();
+}

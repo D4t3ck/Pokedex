@@ -1,9 +1,9 @@
-function pkmnCard(pkmnData) {
+function pkmnCard(pkmnData, i) {
   return /* html */ `
     <section class="pkmn_card" style="background-color: ${pkmnColor(
       pkmnData,
       0
-    )}">
+    )}" onclick="openCard(${i})">
       <div class="pkmn_id">${pkmnId(pkmnData)}</div>
   
       <div class="pkmn_info_container">
