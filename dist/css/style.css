@@ -7,24 +7,13 @@
   --buttonFontColor: #141d2e;
 }
 
-@mixin flexbox($fd: row, $jc: center, $ai: center, $g: 0px) {
-  display: flex;
-  flex-direction: $fd;
-  justify-content: $jc;
-  align-items: $ai;
-  gap: $g;
-}
-
-@mixin box($width, $height: $width) {
-  width: $width;
-  height: $height;
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .d_none {
@@ -42,4 +31,4 @@ html {
 body {
   font-family: var(--mainFont);
   background-color: var(--backgroundColor);
-}
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,52 @@
+:root {
+  --mainFont: system-ui, sans-serif;
+  --backgroundColor: #f5f5f5;
+  --lightgray: #d3d3d3;
+  --mainColor: #e63b3b;
+  --buttonColor: #29abe2;
+  --buttonFontColor: #141d2e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.d_none {
+  display: none;
+}
+
+.d_flex {
+  display: flex;
+}
+
+html {
+  scrollbar-width: thin;
+}
+
+body {
+  font-family: var(--mainFont);
+  background-color: var(--backgroundColor);
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+  width: 100%;
+  height: 80px;
+  margin-top: 1.5rem;
+  background-color: var(--mainColor);
+  box-shadow: 0px -1px 10px 0px rgba(0, 0, 0, 0.5);
+}
+footer span {
+  font-family: var(--mainFont);
+  color: var(--backgroundColor);
+  text-shadow: 3px 3px 5px rgb(0, 0, 0);
+}/*# sourceMappingURL=footer.css.map */

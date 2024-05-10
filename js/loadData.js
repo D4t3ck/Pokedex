@@ -3,6 +3,14 @@ let currentCard = [];
 let count = 51;
 let startCount = 1;
 
+async function fetchApi() {
+  let url = "https://pokeapi.co/api/v2/pokemon/1";
+  let response = await fetch(url);
+  data = await response.json();
+  console.log(" %c Loaded pokemon", "color: orange");
+  console.log(data);
+}
+
 async function renderPkmnData() {
   let content = document.getElementById("content");
 
@@ -10,6 +18,7 @@ async function renderPkmnData() {
     let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
     let response = await fetch(url);
     let pkmnData = await response.json();
+
     pkmnDataArray.push(pkmnData);
 
     content.innerHTML += pkmnCard(pkmnData, i);
@@ -17,18 +26,48 @@ async function renderPkmnData() {
 }
 
 async function openCard(i) {
-  let card = document.getElementById("pkmnCard");
-  card.style.display = "flex";
+  let card = document.getElementById("detailCard");
+  card.classList.remove("d_none");
+  card.classList.add("d_flex");
 
   let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
   let response = await fetch(url);
   currentCard = await response.json();
 
   card.innerHTML += /* html */ `
-    <section class="card_container" onclick="doNotClose(event)">
+    <section style="background-color: ${pkmnColor(
+      currentCard,
+      0
+    )}" class="card_container" onclick="doNotClose(event)">
+    
+    <img src="assets/img/close.png" alt="Close" onclick="closeCard()">
+
+    <div class="pkmn_info_container">
+      <div class="pkmn_info">
+        <div class="pkmn_name">${pkmnName(currentCard)}</div>
+        <div class="pkmn_id">${pkmnId(currentCard)}</div>
+      </div>
+
+      <div>
+        <div class="pkmn_type" style="background-color: ${pkmnColor(
+          currentCard,
+          0
+        )}">${pkmnTypes(currentCard).primaryType}</div>
+        <div>${
+          pkmnTypes(currentCard).secondaryType !== ""
+            ? `<div class="pkmn_type" style="background-color: ${pkmnColor(
+                currentCard,
+                1
+              )}">${pkmnTypes(currentCard).secondaryType}</div>`
+            : ""
+        } 
+        </div>
+      </div>
       
-    <h2>${pkmnName(currentCard)}</h2>
-    <div>${pkmnId(currentCard)}</div>
+      <img src="${pkmnImg2(currentCard)}">
+
+    </div>
+
     </section>
     `;
 }
@@ -37,6 +76,10 @@ async function loadMore() {
   count += 50;
   startCount += 50;
   await renderPkmnData();
+}
+
+function doNotClose(e) {
+  e.stopPropagation();
 }
 
 // HILFSFUNKTIONEN //
@@ -76,6 +119,6 @@ let pkmnImg = (pkmnData) => {
   return pkmnData.sprites.front_default;
 };
 
-function doNotClose(e) {
-  e.stopPropagation();
-}
+let pkmnImg2 = (pkmnData) => {
+  return pkmnData.sprites.other["official-artwork"].front_default
+};

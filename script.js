@@ -1,6 +1,7 @@
 function init() {
   includeHTML();
   renderPkmnData();
+  fetchApi();
 }
 
 function scrollDown() {
@@ -18,7 +19,8 @@ function scrollUp() {
 }
 
 function closeCard() {
-  let card = document.getElementById("pkmnCard");
-  card.style.display = "none";
+  let card = document.getElementById("detailCard");
+  card.classList.remove("d_flex");
+  card.classList.add("d_none");
   card.innerHTML = "";
 }
