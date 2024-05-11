@@ -28,49 +28,15 @@ async function renderPkmnData() {
 async function openCard(i) {
   let card = document.getElementById("detailCard");
   card.classList.remove("d_none");
-  card.classList.add("d_flex");
 
   let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
   let response = await fetch(url);
   currentCard = await response.json();
 
-  card.innerHTML += /* html */ `
-    <section style="background-color: ${pkmnColor(
-      currentCard,
-      0
-    )}" class="card_container" onclick="doNotClose(event)">
-    
-    <img src="assets/img/close.png" alt="Close" onclick="closeCard()">
-
-    <div class="pkmn_info_container">
-      <div class="pkmn_info">
-        <div class="pkmn_name">${pkmnName(currentCard)}</div>
-        <div class="pkmn_id">${pkmnId(currentCard)}</div>
-      </div>
-
-      <div>
-        <div class="pkmn_type" style="background-color: ${pkmnColor(
-          currentCard,
-          0
-        )}">${pkmnTypes(currentCard).primaryType}</div>
-        <div>${
-          pkmnTypes(currentCard).secondaryType !== ""
-            ? `<div class="pkmn_type" style="background-color: ${pkmnColor(
-                currentCard,
-                1
-              )}">${pkmnTypes(currentCard).secondaryType}</div>`
-            : ""
-        } 
-        </div>
-      </div>
-      
-      <img src="${pkmnImg2(currentCard)}">
-
-    </div>
-
-    </section>
-    `;
+  card.innerHTML += openDetailCard(currentCard);
 }
+
+// Executable Functions //
 
 async function loadMore() {
   count += 50;
@@ -82,7 +48,7 @@ function doNotClose(e) {
   e.stopPropagation();
 }
 
-// HILFSFUNKTIONEN //
+// Data Functions //
 
 let pkmnId = (pkmnData) => {
   return `#${pkmnData.id.toString().padStart(3, "0")}`;
@@ -119,6 +85,14 @@ let pkmnImg = (pkmnData) => {
   return pkmnData.sprites.front_default;
 };
 
+let pkmnImgBack = (pkmnData) => {
+  return pkmnData.sprites.back_default;
+};
+
 let pkmnImg2 = (pkmnData) => {
-  return pkmnData.sprites.other["official-artwork"].front_default
+  return pkmnData.sprites.other["official-artwork"].front_default;
+};
+
+let pkmnImgShiny = (pkmnData) => {
+  return pkmnData.sprites.other["official-artwork"].front_shiny;
 };

@@ -27,14 +27,6 @@
   user-select: none;
 }
 
-.d_none {
-  display: none;
-}
-
-.d_flex {
-  display: flex;
-}
-
 html {
   scrollbar-width: thin;
 }
@@ -42,4 +34,53 @@ html {
 body {
   font-family: var(--mainFont);
   background-color: var(--backgroundColor);
+}
+
+.d_none {
+  display: none;
+}
+
+.arrow_down_container {
+  @include flexbox($jc: flex-end);
+  width: 100%;
+
+  img {
+    margin-left: 2rem;
+    rotate: 180deg;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.arrow_up_container {
+  @include flexbox($jc: flex-end);
+  width: 100%;
+
+  img {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.btn_container {
+  @include flexbox;
+
+  .load_btn {
+    padding: 1rem;
+    border: unset;
+    background-color: var(--buttonColor);
+    color: var(--backgroundColor);
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      cursor: pointer;
+      color: var(--buttonFontColor);
+    }
+  }
 }
