@@ -20,6 +20,13 @@
   height: $height;
 }
 
+@mixin randomBorder($width: 2px) {
+  $red: random(255);
+  $green: random(255);
+  $blue: random(255);
+  border: $width dashed rgb($red, $green, $blue);
+}
+
 * {
   margin: 0;
   padding: 0;

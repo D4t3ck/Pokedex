@@ -152,6 +152,7 @@ main {
   justify-content: center;
   align-items: center;
   gap: 0px;
+  border: 2px dashed rgb(153, 4, 155);
   border: solid 1px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   padding: 4px;
