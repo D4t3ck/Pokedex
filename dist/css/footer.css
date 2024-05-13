@@ -3,7 +3,8 @@
   --backgroundColor: #f5f5f5;
   --lightgray: #d3d3d3;
   --mainColor: #e63b3b;
-  --buttonColor: #29abe2;
+  --buttonColor: #1a9ba1;
+  --buttonColorHover: #37c6d0;
   --buttonFontColor: #141d2e;
 }
 
@@ -26,11 +27,59 @@ body {
 }
 
 .d_none {
-  display: none;
+  display: none !important;
 }
 
-.d_flex {
+hr {
+  background-color: var(--backgroundColor);
+}
+
+main .arrow_down_container {
   display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0px;
+  width: 100%;
+}
+main .arrow_down_container img {
+  margin-left: 2rem;
+  rotate: 180deg;
+}
+main .arrow_down_container img:hover {
+  cursor: pointer;
+}
+main .btn_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+}
+main .btn_container .load_btn {
+  padding: 1rem;
+  border: unset;
+  background-color: var(--buttonColor);
+  color: var(--backgroundColor);
+  font: bold 1.5rem var(--mainFont);
+  border-radius: 10px;
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
+}
+main .btn_container .load_btn:hover {
+  cursor: pointer;
+  background-color: var(--buttonColorHover);
+  scale: 1.1;
+}
+main .arrow_up_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0px;
+  width: 100%;
+}
+main .arrow_up_container img:hover {
+  cursor: pointer;
 }
 
 footer {

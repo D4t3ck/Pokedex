@@ -18,7 +18,7 @@ async function includeHTML() {
 
 function renderChart() {
   const ctx = document.getElementById("myChart");
-  ctx.height = 250;
+  ctx.height = 200;
 
   new Chart(ctx, {
     type: "bar",
@@ -28,12 +28,12 @@ function renderChart() {
         {
           label: "Basic Stats",
           data: [
-            currentPkmn.stats[0].base_stat,
-            currentPkmn.stats[1].base_stat,
-            currentPkmn.stats[2].base_stat,
-            currentPkmn.stats[3].base_stat,
-            currentPkmn.stats[4].base_stat,
-            currentPkmn.stats[5].base_stat,
+            currentCard.stats[0].base_stat,
+            currentCard.stats[1].base_stat,
+            currentCard.stats[2].base_stat,
+            currentCard.stats[3].base_stat,
+            currentCard.stats[4].base_stat,
+            currentCard.stats[5].base_stat,
           ],
           borderWidth: 1,
         },

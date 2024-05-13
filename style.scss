@@ -3,7 +3,8 @@
   --backgroundColor: #f5f5f5;
   --lightgray: #d3d3d3;
   --mainColor: #e63b3b;
-  --buttonColor: #29abe2;
+  --buttonColor: #1a9ba1;
+  --buttonColorHover: #37c6d0;
   --buttonFontColor: #141d2e;
 }
 
@@ -20,11 +21,24 @@
   height: $height;
 }
 
+@mixin coverBackground($s: cover, $p: center) {
+  background-repeat: no-repeat;
+  background-size: $s;
+  background-position: $p;
+}
+
+
 @mixin randomBorder($width: 2px) {
   $red: random(255);
   $green: random(255);
   $blue: random(255);
   border: $width dashed rgb($red, $green, $blue);
+}
+
+@mixin curserPointer {
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 * {
@@ -44,50 +58,56 @@ body {
 }
 
 .d_none {
-  display: none;
+  display: none !important;
 }
 
-.arrow_down_container {
-  @include flexbox($jc: flex-end);
-  width: 100%;
+hr {
+  background-color: var(--backgroundColor);
+}
 
-  img {
-    margin-left: 2rem;
-    rotate: 180deg;
+main {
+  .arrow_down_container {
+    @include flexbox($jc: flex-end);
+    width: 100%;
 
-    &:hover {
-      cursor: pointer;
+    img {
+      margin-left: 2rem;
+      rotate: 180deg;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
-}
 
-.arrow_up_container {
-  @include flexbox($jc: flex-end);
-  width: 100%;
+  .btn_container {
+    @include flexbox;
 
-  img {
-    &:hover {
-      cursor: pointer;
+    .load_btn {
+      padding: 1rem;
+      border: unset;
+      background-color: var(--buttonColor);
+      color: var(--backgroundColor);
+      font: bold 1.5rem var(--mainFont);
+      border-radius: 10px;
+      box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        cursor: pointer;
+        background-color: var(--buttonColorHover);
+        scale: 1.1;
+      }
     }
   }
-}
 
-.btn_container {
-  @include flexbox;
+  .arrow_up_container {
+    @include flexbox($jc: flex-end);
+    width: 100%;
 
-  .load_btn {
-    padding: 1rem;
-    border: unset;
-    background-color: var(--buttonColor);
-    color: var(--backgroundColor);
-    border-radius: 10px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
-
-    &:hover {
-      cursor: pointer;
-      color: var(--buttonFontColor);
+    img {
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

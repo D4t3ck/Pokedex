@@ -12,7 +12,7 @@
 }
 
 .detail_container {
-  @include flexbox($fd: column, $jc: unset, $ai: unset, $g: 1rem);
+  @include flexbox($fd: column, $jc: unset, $ai: unset, $g: 0.5rem);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -25,11 +25,12 @@
   transform: translate(-50%, -50%);
 
   .close {
-    margin-right: auto;
+    margin-right: 1rem;
+    margin-left: auto;
     font-family: var(--mainFont);
     font-size: 2.5rem;
     color: var(--backgroundColor);
-    text-shadow: 1.5px 1.5px rgba(0, 0, 0, .8);
+    text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.8);
 
     &:hover {
       cursor: pointer;
@@ -44,18 +45,22 @@
       margin-bottom: 1rem;
       width: 100%;
 
-
       .detail_name {
         font: bold 2.5rem var(--mainFont);
         color: var(--backgroundColor);
-        text-shadow: 1.5px 1.5px rgba(0, 0, 0, .8);
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.8);
       }
 
       .detail_id {
+        @mixin pseudo($display: block, $pos: absolute, $content: "") {
+          content: $content;
+          display: $display;
+          position: $pos;
+        }
         font: bold 1.5rem var(--mainFont);
         color: var(--backgroundColor);
-        letter-spacing: .5px;
-        text-shadow: 1.5px 1.5px rgba(0, 0, 0, .8);
+        letter-spacing: 0.5px;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.8);
       }
     }
 
@@ -76,10 +81,10 @@
         color: var(--backgroundColor);
       }
 
-      .shiny_img {
+      .shiny_btn {
         width: 3rem;
-        margin-left: auto; 
-        transition: transform 200ms ease-in-out 100ms; 
+        margin-left: auto;
+        transition: transform 200ms ease-in-out 100ms;
 
         &:hover {
           cursor: pointer;
@@ -91,15 +96,39 @@
 }
 
 .img_container {
-  @include flexbox;
+  @include flexbox($jc: space-between);
+  background: url(/assets/img/bg_1.png);
+  @include coverBackground($s: 150%);
 
   .detail_img {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 240px;
+    transform: translateY(2.5rem);
     transition: transform 200ms ease-in-out 100ms;
   }
 
-  
+  :first-child {
+    @include curserPointer;
+    font: bold 3.5rem var(--mainFont);
+    color: var(--backgroundColor);
+    text-shadow: -1.5px 1.5px rgba(0, 0, 0, 0.8);
+  }
+
+  :nth-child(4) {
+    @include curserPointer;
+    font: bold 3.5rem var(--mainFont);
+    color: var(--backgroundColor);
+    text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.8);
+  }
+}
+
+.statsContainer {
+  display: flex;
+  justify-content: center;
+  background-color: whitesmoke;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding-top: 32px;
 }

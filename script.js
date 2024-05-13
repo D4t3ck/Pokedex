@@ -18,16 +18,24 @@ function scrollUp() {
   });
 }
 
-function toggleImages(i, event) {
-  event.stopPropagation();
-
-  document.getElementById(`frontImg_${i}`).classList.toggle("d_none");
-
-  document.getElementById(`backImg_${i}`).classList.toggle("d_none");
-}
-
 function closeCard() {
   let card = document.getElementById("detailCard");
   card.classList.add("d_none");
   card.innerHTML = "";
+}
+
+function turnPkmn(i, event) {
+  event.stopPropagation();
+  document.getElementById(`frontImg_${i}`).classList.toggle("d_none");
+  document.getElementById(`backImg_${i}`).classList.toggle("d_none");
+}
+
+function showShiny(i) {
+  let detailImg = document.getElementById(`detailImg_${i}`);
+  let shinyImg = document.getElementById(`shinyImg_${i}`);
+
+  if (detailImg && shinyImg) {
+    detailImg.classList.toggle("d_none");
+    shinyImg.classList.toggle("d_none");
+  }
 }
