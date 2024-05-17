@@ -27,7 +27,6 @@
   background-position: $p;
 }
 
-
 @mixin randomBorder($width: 2px) {
   $red: random(255);
   $green: random(255);

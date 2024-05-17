@@ -125,10 +125,8 @@
 }
 
 .statsContainer {
-  display: flex;
-  justify-content: center;
-  background-color: whitesmoke;
-  border: 1px solid lightgray;
+  background-color: var(--backgroundColor);
+  border: 1px solid var(--backgroundColor);
   border-radius: 10px;
   padding-top: 32px;
 }
