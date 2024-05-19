@@ -38,6 +38,7 @@ async function openCard(i) {
   renderChart();
 }
 
+
 // Executable Functions //
 
 async function loadMore() {

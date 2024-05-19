@@ -18,29 +18,33 @@ async function includeHTML() {
 
 function renderChart() {
   const ctx = document.getElementById("myChart");
-  ctx.height = 200;
+  if (ctx) {
+    ctx.height = 200;
 
-  new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: ["HP", "Attack", "Defense", "Sp-Attack", "Sp-Def", "Speed"],
-      datasets: [
-        {
-          label: "Basic Stats",
-          data: [
-            currentCard.stats[0].base_stat,
-            currentCard.stats[1].base_stat,
-            currentCard.stats[2].base_stat,
-            currentCard.stats[3].base_stat,
-            currentCard.stats[4].base_stat,
-            currentCard.stats[5].base_stat,
-          ],
-          borderWidth: 1,
-        },
-      ],
-    },
-    options: {
-      indexAxis: "y",
-    },
-  });
+    new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: ["HP", "Attack", "Defense", "Sp-Attack", "Sp-Def", "Speed"],
+        datasets: [
+          {
+            label: "Basic Stats",
+            data: [
+              currentCard.stats[0].base_stat,
+              currentCard.stats[1].base_stat,
+              currentCard.stats[2].base_stat,
+              currentCard.stats[3].base_stat,
+              currentCard.stats[4].base_stat,
+              currentCard.stats[5].base_stat,
+            ],
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        indexAxis: "y",
+      },
+    });
+  } else {
+    console.error("Chart canvas not found");
+  }
 }
