@@ -125,23 +125,39 @@ main .arrow_up_container img:hover {
 }
 .header form input::-moz-placeholder {
   font-family: var(--mainFont);
-  text-align: center;
   color: var(--backgroundColor);
 }
 .header form input::placeholder {
   font-family: var(--mainFont);
-  text-align: center;
   color: var(--backgroundColor);
 }
-.header form button {
-  height: 1.5rem;
+.header form div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+  gap: 1rem;
+}
+.header form div #searchBtn {
+  scale: 1.3;
   outline: none;
   border: none;
   background-color: transparent;
 }
-.header form button:hover {
+.header form div #searchBtn:hover {
   cursor: pointer;
-  scale: 1.3;
+  scale: 1.4;
+}
+.header form div #clearBtn {
+  font-size: 1.5rem;
+  color: var(--backgroundColor);
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+.header form div #clearBtn:hover {
+  cursor: pointer;
 }
 
 /********** MEDIAQUERY ***********/
