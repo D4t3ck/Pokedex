@@ -14,7 +14,7 @@ function searchForm() {
       search();
     });
   } else {
-    console.error("Suchformular nicht gefunden.");
+    console.error("Search form not found.");
   }
 }
 
@@ -24,9 +24,8 @@ async function search() {
     .value.trim()
     .toLowerCase();
 
-  if (searchInput === "") {
-    alert("Bitte geben Sie einen Pokémon-Namen ein.");
-    return;
+  if (!searchInput) {
+    return alert("Please enter a Pokémon name or number.");
   }
 
   try {
@@ -35,7 +34,7 @@ async function search() {
     );
 
     if (!response.ok) {
-      throw new Error("Pokémon nicht gefunden");
+      throw new Error("Pokémon not found");
     }
 
     const pkmnData = await response.json();
@@ -65,8 +64,7 @@ function monitorInput() {
     const suggestionsContainer = document.getElementById("suggestions");
 
     if (!searchValue) {
-      suggestionsContainer.innerHTML = "";
-      return;
+      return (suggestionsContainer.innerHTML = "");
     }
 
     try {
@@ -93,7 +91,7 @@ function monitorInput() {
         });
       });
     } catch (error) {
-      console.error("Fehler beim Abrufen der Pokémon-Namen:", error);
+      console.error("Error retrieving Pokémon names:", error);
     }
   });
 }
