@@ -1,13 +1,16 @@
 <header class="header">
   <img class="logo_img" src="./assets/img/Pokédex_logo.png" alt="App Logo" />
 
-  <div class="search_container">
+  <div>
     <form action="" onsubmit="search(); return false">
-      <input type="text" id="search" placeholder="Search" />
-      <div>
+      <div class="search_container">
+        <input type="text" id="search" placeholder="Search" />
         <button type="button" id="clearBtn" onclick="clearSearch()">
           &#x0058;
         </button>
+      </div>
+
+      <div>
         <button id="searchBtn">&#x1F50D;</button>
       </div>
     </form>

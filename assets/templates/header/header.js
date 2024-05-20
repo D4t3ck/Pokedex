@@ -48,15 +48,16 @@ function displaySearchResult(pkmnData) {
   renderChart();
 }
 
-function monitorInput() {
+async function monitorInput() {
   const searchInput = document.getElementById("search");
+  const suggestionsContainer = document.getElementById("suggestions");
 
   searchInput.addEventListener("input", async function () {
     const searchValue = this.value.trim().toLowerCase();
-    const suggestionsContainer = document.getElementById("suggestions");
 
     if (!searchValue) {
-      return (suggestionsContainer.innerHTML = "");
+      suggestionsContainer.innerHTML = "";
+      return;
     }
 
     try {
@@ -75,12 +76,11 @@ function monitorInput() {
 
       suggestionsContainer.innerHTML = suggestionsList;
 
-      const suggestionElements = document.querySelectorAll(".suggestion");
-      suggestionElements.forEach((element) => {
-        element.addEventListener("click", function () {
-          searchInput.value = this.textContent;
+      suggestionsContainer.addEventListener("click", function (event) {
+        if (event.target.classList.contains("suggestion")) {
+          searchInput.value = event.target.textContent;
           search();
-        });
+        }
       });
     } catch (error) {
       console.error("Error retrieving Pokémon names:", error);
