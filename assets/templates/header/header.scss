@@ -17,9 +17,6 @@
     @include flexbox;
     margin-top: 20px;
     margin-right: 1rem;
-    /* padding: 0 1rem 0 1rem;
-    border: 1px solid var(--backgroundColor);
-    border-radius: 10px; */
 
     .search_container {
       @include flexbox;
@@ -28,6 +25,13 @@
       border: 1px solid var(--backgroundColor);
       border-radius: 10px 0 0 10px;
 
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      input:-webkit-autofill:active {
+        transition: background-color 5000s;
+        -webkit-text-fill-color: var(--backgroundColor) !important;
+      }
       input {
         height: 1.5rem;
         outline: none;
@@ -61,29 +65,35 @@
     div:nth-child(2) {
       @include flexbox;
       height: 2rem;
-      padding: 0 1rem;
+      padding: 0 0.4rem;
       border: 1px solid var(--backgroundColor);
       border-radius: 0 10px 10px 0;
 
       #searchBtn {
+        @include flexbox;
         outline: none;
         border: none;
         background-color: transparent;
 
+        img {
+          width: 1.3rem;
+        }
+
         &:hover {
           cursor: pointer;
-          scale: 1.4;
+          scale: 1.1;
         }
       }
     }
   }
 }
 
-.suggestion {
+#suggestions {
   position: absolute;
+  z-index: 100;
   width: 16rem;
   height: 10rem;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   background-color: black;
   color: white;
   text-align: center;

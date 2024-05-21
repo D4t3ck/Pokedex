@@ -43,6 +43,7 @@ function displaySearchResult(pkmnData) {
   const card = document.getElementById("detailCard");
   card.classList.remove("d_none");
   card.innerHTML = openDetailCard(pkmnData, pkmnData.id);
+  setModalState(true);
 
   currentCard = pkmnData;
   renderChart();
