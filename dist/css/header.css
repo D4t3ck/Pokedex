@@ -123,8 +123,8 @@ main .arrow_up_container img:hover {
 .header form .search_container input:-webkit-autofill:hover,
 .header form .search_container input:-webkit-autofill:focus,
 .header form .search_container input:-webkit-autofill:active {
-  -webkit-transition: background-color 5000s;
-  transition: background-color 5000s;
+  -webkit-transition: background-color 50000s;
+  transition: background-color 50000s;
   -webkit-text-fill-color: var(--backgroundColor) !important;
 }
 .header form .search_container input {

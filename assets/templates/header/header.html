@@ -4,14 +4,21 @@
   <div>
     <form action="" onsubmit="search(); return false">
       <div class="search_container">
-        <input type="text" id="search" placeholder="Search" />
+        <input
+          type="text"
+          id="search"
+          placeholder="Search"
+          oninput="toggleSuggestionBox()"
+        />
         <button type="button" id="clearBtn" onclick="clearSearch()">
           &#x0058;
         </button>
       </div>
 
       <div>
-        <button id="searchBtn"><img src="assets/img/icons8-suche-50.png" alt=""></button>
+        <button id="searchBtn">
+          <img src="assets/img/icons8-suche-50.png" alt="" />
+        </button>
       </div>
     </form>
 

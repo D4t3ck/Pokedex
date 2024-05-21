@@ -29,9 +29,10 @@
       input:-webkit-autofill:hover,
       input:-webkit-autofill:focus,
       input:-webkit-autofill:active {
-        transition: background-color 5000s;
+        transition: background-color 50000s;
         -webkit-text-fill-color: var(--backgroundColor) !important;
       }
+      
       input {
         height: 1.5rem;
         outline: none;

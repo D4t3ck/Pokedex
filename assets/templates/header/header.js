@@ -40,10 +40,12 @@ async function search() {
 }
 
 function displaySearchResult(pkmnData) {
+  let input = document.getElementById("suggestions");
   const card = document.getElementById("detailCard");
   card.classList.remove("d_none");
   card.innerHTML = openDetailCard(pkmnData, pkmnData.id);
   setModalState(true);
+  input.classList.add("d_none");
 
   currentCard = pkmnData;
   renderChart();
@@ -90,5 +92,13 @@ async function monitorInput() {
 }
 
 function clearSearch() {
+  document.getElementById("suggestions").classList.add("d_none");
   document.getElementById("search").value = "";
+}
+
+function toggleSuggestionBox() {
+  let input = document.getElementById("search");
+  if (input.value !== "") {
+    document.getElementById("suggestions").classList.remove("d_none");
+  }
 }
