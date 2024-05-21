@@ -32,7 +32,7 @@
         transition: background-color 50000s;
         -webkit-text-fill-color: var(--backgroundColor) !important;
       }
-      
+
       input {
         height: 1.5rem;
         outline: none;
@@ -92,8 +92,8 @@
 #suggestions {
   position: absolute;
   z-index: 100;
-  width: 16rem;
-  height: 10rem;
+  width: 10rem;
+  height: 7rem;
   margin-top: 0.5rem;
   background-color: black;
   color: white;

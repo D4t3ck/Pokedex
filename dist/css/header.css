@@ -190,8 +190,8 @@ main .arrow_up_container img:hover {
 #suggestions {
   position: absolute;
   z-index: 100;
-  width: 16rem;
-  height: 10rem;
+  width: 10rem;
+  height: 7rem;
   margin-top: 0.5rem;
   background-color: black;
   color: white;

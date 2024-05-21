@@ -1,4 +1,4 @@
-let isModalOpen = false;
+
 
 async function init() {
   includeHTML();
@@ -9,6 +9,7 @@ async function init() {
 }
 
 function setModalState(isOpen) {
+  let isModalOpen = false;
   isModalOpen = isOpen;
   document.body.style.overflow = isModalOpen ? 'hidden' : 'auto';
 }
