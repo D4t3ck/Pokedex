@@ -1,35 +1,50 @@
 function pkmnCard(pkmnData, i) {
   return /* html */ `
-    <section class="pkmn_card" style="background-color: ${pkmnColor(pkmnData, 0)}" onclick="openCard(${i})">
+    <section class="pkmn_card" style="background-color: ${pkmnColor(
+      pkmnData,
+      0
+    )}" onclick="openCard(${i})">
       <div class="pkmn_id">${pkmnId(pkmnData)}</div>
   
       <div class="pkmn_info_container">
         <div class="pkmn_info">
           <span class="pkmn_name">${pkmnName(pkmnData)}</span>
-          <div class="pkmn_type" style="background-color: ${pkmnColor(pkmnData, 0)}">${pkmnTypes(pkmnData).primaryType}</div>
+          <div class="pkmn_type" style="background-color: ${pkmnColor(
+            pkmnData,
+            0
+          )}">${pkmnTypes(pkmnData).primaryType}</div>
           ${
             pkmnTypes(pkmnData).secondaryType !== ""
-              ? `<div class="pkmn_type" style="background-color: ${pkmnColor(pkmnData, 1)}">${pkmnTypes(pkmnData).secondaryType}</div>`
+              ? `<div class="pkmn_type" style="background-color: ${pkmnColor(
+                  pkmnData,
+                  1
+                )}">${pkmnTypes(pkmnData).secondaryType}</div>`
               : ""
           } 
         </div>
   
-        <img id="frontImg_${i}" class="pkmn_img_front" src="${pkmnImg(pkmnData)}" alt="Pokemon Front Picture" onclick="turnPkmn(${i}, event)" />
+        <img id="frontImg_${i}" class="pkmn_img_front" src="${pkmnImg(
+    pkmnData
+  )}" alt="Pokemon Front Picture" onclick="turnPkmn(${i}, event)" />
         
-        <img id="backImg_${i}" class="pkmn_img_back d_none" src="${pkmnImgBack(pkmnData)}" alt="Pokemon Back Picture" onclick="turnPkmn(${i}, event)" >
+        <img id="backImg_${i}" class="pkmn_img_back d_none" src="${pkmnImgBack(
+    pkmnData
+  )}" alt="Pokemon Back Picture" onclick="turnPkmn(${i}, event)" >
 
       </div>
     </section>
   `;
 }
 
-
 function openDetailCard(currentCard, i) {
-  let firstCard = (i === startCount);
+  let firstCard = i === startCount;
   let switchLeft = firstCard ? "d_none" : "";
 
   return /* html */ `
-    <section style="background-color: ${pkmnColor(currentCard, 0)}" class="detail_container" onclick="doNotClose(event)">
+    <section style="background-color: ${pkmnColor(
+      currentCard,
+      0
+    )}" class="detail_container" onclick="doNotClose(event)">
       <div class="close" src="assets/img/close.png" alt="Close" onclick="closeCard()">&#x0058;</div>
       <div class="detail_info_container">
         <div class="detail_head">
@@ -37,10 +52,16 @@ function openDetailCard(currentCard, i) {
           <div class="detail_name">${pkmnName(currentCard)}</div>
         </div>
         <div class="type_container">
-          <div class="detail_type" style="background-color: ${pkmnColor(currentCard, 0)}">${pkmnTypes(currentCard).primaryType}</div>
+          <div class="detail_type" style="background-color: ${pkmnColor(
+            currentCard,
+            0
+          )}">${pkmnTypes(currentCard).primaryType}</div>
           ${
             pkmnTypes(currentCard).secondaryType !== ""
-              ? `<div class="detail_type" style="background-color: ${pkmnColor(currentCard, 1)}">${pkmnTypes(currentCard).secondaryType}</div>`
+              ? `<div class="detail_type" style="background-color: ${pkmnColor(
+                  currentCard,
+                  1
+                )}">${pkmnTypes(currentCard).secondaryType}</div>`
               : ""
           }
           <img class="shiny_btn" src="assets/img/shiny_icon.png" onclick="showShiny(${i})">
@@ -52,9 +73,13 @@ function openDetailCard(currentCard, i) {
       <div class="img_container">
         <div id="arrowLeft" class="${switchLeft}" onclick="switchLeft(${i})">&lt;</div>
 
-        <img id="detailImg_${i}" class="detail_img" src="${pkmnImg2(currentCard)}" alt="Pokemon Image">
+        <img id="detailImg_${i}" class="detail_img" src="${pkmnImg2(
+    currentCard
+  )}" alt="Pokemon Image">
 
-        <img id="shinyImg_${i}" class="detail_img d_none" src="${pkmnImgShiny(currentCard)}" alt="Pokemon Shiny Image">
+        <img id="shinyImg_${i}" class="detail_img d_none" src="${pkmnImgShiny(
+    currentCard
+  )}" alt="Pokemon Shiny Image">
 
         <!-- <img src="${pkmnImgGif(currentCard)}" alt="Pokemon Gif"> -->
 

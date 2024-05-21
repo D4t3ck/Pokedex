@@ -29,6 +29,7 @@ async function renderPkmnData() {
 async function openCard(i) {
   let card = document.getElementById("detailCard");
   card.classList.remove("d_none");
+  setModalState(true);
 
   let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
   let response = await fetch(url);
@@ -37,7 +38,6 @@ async function openCard(i) {
   card.innerHTML = openDetailCard(currentCard, i);
   renderChart();
 }
-
 
 // Executable Functions //
 

@@ -1,3 +1,5 @@
+let isModalOpen = false;
+
 async function init() {
   includeHTML();
   await renderPkmnData();
@@ -5,6 +7,12 @@ async function init() {
   searchForm();
   monitorInput();
 }
+
+function setModalState(isOpen) {
+  isModalOpen = isOpen;
+  document.body.style.overflow = isModalOpen ? 'hidden' : 'auto';
+}
+
 
 function scrollDown() {
   window.scrollTo({
@@ -23,7 +31,7 @@ function scrollUp() {
 function closeCard() {
   let card = document.getElementById("detailCard");
   card.classList.add("d_none");
-  card.innerHTML = "";
+  setModalState(false);
 }
 
 function turnPkmn(i, event) {
