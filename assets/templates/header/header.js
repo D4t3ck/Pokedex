@@ -46,63 +46,140 @@ async function search() {
 }
 
 /**
- * Displays the search result in the detail card.
- * @param {Object} pkmnData - The Pokémon data object.
+ * Displays the search result by updating the UI with the provided Pokémon data.
+ * @param {Object} pkmnData - The Pokémon data to display.
  */
 function displaySearchResult(pkmnData) {
-  let input = document.getElementById("suggestions");
+  const input = document.getElementById("suggestions");
   const card = document.getElementById("detailCard");
-  card.classList.remove("d_none");
-  card.innerHTML = openDetailCard(pkmnData, pkmnData.id);
+
+  updateCardVisibility(card, pkmnData);
+  toggleInputVisibility(input);
   setModalState(true);
-  input.classList.add("d_none");
 
   currentCard = pkmnData;
   renderChart();
 }
 
 /**
- * Monitors the input for search suggestions.
+ * Updates the visibility of the detail card with the provided Pokémon data.
+ * @param {HTMLElement} card - The detail card element.
+ * @param {Object} pkmnData - The Pokémon data to display in the card.
+ */
+function updateCardVisibility(card, pkmnData) {
+  card.classList.remove("d_none");
+  card.innerHTML = openDetailCard(pkmnData, pkmnData.id);
+}
+
+/**
+ * Toggles the visibility of the input element by adding a 'd_none' class.
+ * @param {HTMLElement} input - The input element to hide.
+ */
+function toggleInputVisibility(input) {
+  input.classList.add("d_none");
+}
+
+/**
+ * Monitors the input field for Pokémon name searches and updates the suggestions.
  */
 async function monitorInput() {
   const searchInput = document.getElementById("search");
   const suggestionsContainer = document.getElementById("suggestions");
 
-  searchInput.addEventListener("input", async function () {
+  searchInput.addEventListener("input", handleInput);
+
+  /**
+   * Handles the input event for the search input field.
+   */
+  async function handleInput() {
     const searchValue = this.value.trim().toLowerCase();
 
     if (!searchValue) {
-      return (suggestionsContainer.innerHTML = "");
+      clearSuggestions();
+      return;
     }
 
     try {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=1025&offset=0`);
-      const data = await response.json();
-
-      const filteredNames = data.results.filter((pokemon) => {
-        const pokemonId = pokemon.url.split("/").filter(Boolean).pop();
-        return pokemon.name.includes(searchValue) || pokemonId.includes(searchValue);
-      });
-
-      const suggestionsList = filteredNames.map((pokemon) => {
-        const pokemonId = pokemon.url.split("/").filter(Boolean).pop();
-        return `<div class="suggestion">#${pokemonId} ${pokemon.name}</div>`;
-      }).join("");
-
-      suggestionsContainer.innerHTML = suggestionsList;
-
-      suggestionsContainer.addEventListener("click", function (event) {
-        if (event.target.classList.contains("suggestion")) {
-          const selectedText = event.target.textContent;
-          const selectedName = selectedText.substring(selectedText.indexOf(' ') + 1);
-          searchInput.value = selectedName;
-          search();
-        }
-      });
+      const data = await fetchPokemonData();
+      const filteredNames = filterPokemonNames(data.results, searchValue);
+      displaySuggestions(filteredNames);
     } catch (error) {
       console.error("Error retrieving Pokémon names:", error);
     }
-  });
+  }
+
+  /**
+   * Clears the suggestions container.
+   */
+  function clearSuggestions() {
+    suggestionsContainer.innerHTML = "";
+  }
+
+  /**
+   * Fetches Pokémon data from the API.
+   * @returns {Promise<Object>} The Pokémon data.
+   */
+  async function fetchPokemonData() {
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/?limit=1025&offset=0`
+    );
+    return response.json();
+  }
+
+  /**
+   * Filters the Pokémon names based on the search value.
+   * @param {Array<Object>} pokemonList - The list of Pokémon data.
+   * @param {string} searchValue - The search value to filter by.
+   * @returns {Array<Object>} The filtered list of Pokémon.
+   */
+  function filterPokemonNames(pokemonList, searchValue) {
+    return pokemonList.filter((pokemon) => {
+      const pokemonId = getPokemonId(pokemon.url);
+      return (
+        pokemon.name.includes(searchValue) || pokemonId.includes(searchValue)
+      );
+    });
+  }
+
+  /**
+   * Extracts the Pokémon ID from the URL.
+   * @param {string} url - The URL of the Pokémon.
+   * @returns {string} The Pokémon ID.
+   */
+  function getPokemonId(url) {
+    return url.split("/").filter(Boolean).pop();
+  }
+
+  /**
+   * Displays the filtered Pokémon suggestions.
+   * @param {Array<Object>} pokemonList - The filtered list of Pokémon.
+   */
+  function displaySuggestions(pokemonList) {
+    const suggestionsList = pokemonList
+      .map((pokemon) => {
+        const pokemonId = getPokemonId(pokemon.url);
+        return `<div class="suggestion">#${pokemonId} ${pokemon.name}</div>`;
+      })
+      .join("");
+
+    suggestionsContainer.innerHTML = suggestionsList;
+    suggestionsContainer.addEventListener("click", handleSuggestionClick);
+  }
+
+  /**
+   * Handles the click event on a suggestion.
+   * @param {Event} event - The click event.
+   */
+  function handleSuggestionClick(event) {
+    if (event.target.classList.contains("suggestion")) {
+      const selectedText = event.target.textContent;
+      const selectedName = selectedText.substring(
+        selectedText.indexOf(" ") + 1
+      );
+      searchInput.value = selectedName;
+      search();
+    }
+  }
 }
 
 /**
