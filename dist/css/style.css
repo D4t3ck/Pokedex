@@ -32,6 +32,10 @@ body {
   display: none !important;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 hr {
   background-color: var(--backgroundColor);
 }

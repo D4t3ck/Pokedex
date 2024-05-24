@@ -47,15 +47,33 @@ async function openCard(i) {
 
   card.innerHTML = openDetailCard(currentCard, i);
   renderChart();
+  stopSwitchLeft(i);
 }
 
 /**
- * Loads more Pokémon data onto the webpage.
+ * Asynchronous function to load more Pokémon data.
+ * Increases the count by 50, renders the Pokémon data, and enables the load more button after rendering.
+ * @async
+ * @returns {Promise<void>} A Promise that resolves once the Pokémon data is rendered.
  */
 async function loadMore() {
+  let button = document.getElementById("loadMore");
+  button.disabled = true;
   count += 50;
   startCount += 50;
   await renderPkmnData();
+  button.disabled = false;
+}
+
+/**
+ * Hides the left arrow if the provided index is 1.
+ * @param {number} i - The index to determine whether to hide the left arrow.
+ * @returns {void}
+ */
+function stopSwitchLeft(i) {
+  if (i === 1) {
+    document.getElementById("arrowLeft").classList.add("hidden");
+  }
 }
 
 /**
