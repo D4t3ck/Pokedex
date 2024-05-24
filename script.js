@@ -1,5 +1,3 @@
-
-
 async function init() {
   includeHTML();
   await renderPkmnData();
@@ -11,9 +9,8 @@ async function init() {
 function setModalState(isOpen) {
   let isModalOpen = false;
   isModalOpen = isOpen;
-  document.body.style.overflow = isModalOpen ? 'hidden' : 'auto';
+  document.body.style.overflow = isModalOpen ? "hidden" : "auto";
 }
-
 
 function scrollDown() {
   window.scrollTo({

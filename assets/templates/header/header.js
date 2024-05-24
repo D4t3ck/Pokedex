@@ -59,30 +59,31 @@ async function monitorInput() {
     const searchValue = this.value.trim().toLowerCase();
 
     if (!searchValue) {
-      suggestionsContainer.innerHTML = "";
-      return;
+      return (suggestionsContainer.innerHTML = "");
     }
 
     try {
-      const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/?limit=1025&offset=0`
-      );
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=1025&offset=0`);
       const data = await response.json();
 
-      const filteredNames = data.results.filter((pokemon) =>
-        pokemon.name.includes(searchValue)
-      );
+      const filteredNames = data.results.filter((pokemon) => {
+        const pokemonId = pokemon.url.split("/").filter(Boolean).pop();
+        return pokemon.name.includes(searchValue) || pokemonId.includes(searchValue);
+      });
 
-      const suggestionsList = filteredNames
-        .map((pokemon) => `<div class="suggestion">${pokemon.name}</div>`)
-        .join("");
+      const suggestionsList = filteredNames.map((pokemon) => {
+        const pokemonId = pokemon.url.split("/").filter(Boolean).pop();
+        return `<div class="suggestion">#${pokemonId} ${pokemon.name}</div>`;
+      }).join("");
 
       suggestionsContainer.innerHTML = suggestionsList;
 
       suggestionsContainer.addEventListener("click", function (event) {
         if (event.target.classList.contains("suggestion")) {
-          searchInput.value = event.target.textContent;
-          search();
+          const selectedText = event.target.textContent;
+          const selectedName = selectedText.substring(selectedText.indexOf(' ') + 1);
+          searchInput.value = selectedName;
+         /*  search(); */
         }
       });
     } catch (error) {
