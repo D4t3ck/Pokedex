@@ -1,3 +1,6 @@
+/**
+ * Sets up the search functionality.
+ */
 function searchForm() {
   const form = document.querySelector("form");
   if (form) {
@@ -10,6 +13,9 @@ function searchForm() {
   }
 }
 
+/**
+ * Searches for a Pokémon based on the input value.
+ */
 async function search() {
   const searchInput = document
     .getElementById("search")
@@ -39,6 +45,10 @@ async function search() {
   }
 }
 
+/**
+ * Displays the search result in the detail card.
+ * @param {Object} pkmnData - The Pokémon data object.
+ */
 function displaySearchResult(pkmnData) {
   let input = document.getElementById("suggestions");
   const card = document.getElementById("detailCard");
@@ -51,6 +61,9 @@ function displaySearchResult(pkmnData) {
   renderChart();
 }
 
+/**
+ * Monitors the input for search suggestions.
+ */
 async function monitorInput() {
   const searchInput = document.getElementById("search");
   const suggestionsContainer = document.getElementById("suggestions");
@@ -92,11 +105,17 @@ async function monitorInput() {
   });
 }
 
+/**
+ * Clears the search input and hides the suggestions.
+ */
 function clearSearch() {
   document.getElementById("suggestions").classList.add("d_none");
   document.getElementById("search").value = "";
 }
 
+/**
+ * Toggles the visibility of the search suggestions.
+ */
 function toggleSuggestionBox() {
   let input = document.getElementById("search");
   if (input.value !== "") {

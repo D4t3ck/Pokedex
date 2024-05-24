@@ -1,3 +1,7 @@
+/**
+ * Initializes the application by including HTML, rendering Pokémon data, fetching API data, and setting up search functionality.
+ * @returns {Promise<void>} A promise that resolves when initialization is complete.
+ */
 async function init() {
   includeHTML();
   await renderPkmnData();
@@ -6,12 +10,19 @@ async function init() {
   monitorInput();
 }
 
+/**
+ * Sets the state of the modal.
+ * @param {boolean} isOpen - Indicates whether the modal is open or closed.
+ */
 function setModalState(isOpen) {
   let isModalOpen = false;
   isModalOpen = isOpen;
   document.body.style.overflow = isModalOpen ? "hidden" : "auto";
 }
 
+/**
+ * Scrolls the window to the bottom of the page smoothly.
+ */
 function scrollDown() {
   window.scrollTo({
     top: document.body.scrollHeight,
@@ -19,6 +30,9 @@ function scrollDown() {
   });
 }
 
+/**
+ * Scrolls the window to the top of the page smoothly.
+ */
 function scrollUp() {
   window.scrollTo({
     top: 0,
@@ -26,18 +40,30 @@ function scrollUp() {
   });
 }
 
+/**
+ * Closes the Pokémon detail card.
+ */
 function closeCard() {
   let card = document.getElementById("detailCard");
   card.classList.add("d_none");
   setModalState(false);
 }
 
+/**
+ * Toggles between the front and back images of a Pokémon card.
+ * @param {number} i - The index of the Pokémon card.
+ * @param {Event} event - The event object.
+ */
 function turnPkmn(i, event) {
   event.stopPropagation();
   document.getElementById(`frontImg_${i}`).classList.toggle("d_none");
   document.getElementById(`backImg_${i}`).classList.toggle("d_none");
 }
 
+/**
+ * Toggles between the regular and shiny images of a Pokémon.
+ * @param {number} i - The index of the Pokémon.
+ */
 function showShiny(i) {
   let detailImg = document.getElementById(`detailImg_${i}`);
   let shinyImg = document.getElementById(`shinyImg_${i}`);

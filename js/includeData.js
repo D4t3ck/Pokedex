@@ -1,5 +1,7 @@
-// INCLUDE HTML //
-
+/**
+ * Includes HTML content from external files into elements with the attribute 'w3-include-html'.
+ * @returns {Promise<void>} A promise that resolves when HTML content is included successfully.
+ */
 async function includeHTML() {
   let includeElements = document.querySelectorAll("[w3-include-html]");
   for (let i = 0; i < includeElements.length; i++) {
@@ -14,8 +16,9 @@ async function includeHTML() {
   }
 }
 
-// BASIC STATS //
-
+/**
+ * Renders a bar chart displaying the basic stats of the current Pokémon.
+ */
 function renderChart() {
   const ctx = document.getElementById("myChart");
   if (ctx) {

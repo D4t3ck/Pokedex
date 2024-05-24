@@ -1,3 +1,9 @@
+/**
+ * Generates HTML markup for a Pokémon card.
+ * @param {Object} pkmnData - The Pokémon data object.
+ * @param {number} i - The index of the Pokémon card.
+ * @returns {string} The HTML markup for the Pokémon card.
+ */
 function pkmnCard(pkmnData, i) {
   return /* html */ `
     <section class="pkmn_card" style="background-color: ${pkmnColor(
@@ -36,6 +42,12 @@ function pkmnCard(pkmnData, i) {
   `;
 }
 
+/**
+ * Generates HTML markup for the detailed view of a Pokémon card.
+ * @param {Object} currentCard - The Pokémon data object for the current card.
+ * @param {number} i - The index of the Pokémon card.
+ * @returns {string} The HTML markup for the detailed view of the Pokémon card.
+ */
 function openDetailCard(currentCard, i) {
   let firstCard = i === startCount;
   let switchLeft = firstCard ? "d_none" : "";

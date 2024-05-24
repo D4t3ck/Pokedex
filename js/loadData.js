@@ -4,6 +4,9 @@ let count = 51;
 let startCount = 1;
 let i = 0;
 
+/**
+ * Fetches Pokémon data from the PokeAPI.
+ */
 async function fetchApi() {
   let url = "https://pokeapi.co/api/v2/pokemon/1";
   let response = await fetch(url);
@@ -12,6 +15,9 @@ async function fetchApi() {
   console.log(data);
 }
 
+/**
+ * Renders Pokémon data onto the webpage.
+ */
 async function renderPkmnData() {
   let content = document.getElementById("content");
 
@@ -26,6 +32,10 @@ async function renderPkmnData() {
   }
 }
 
+/**
+ * Opens a detailed view of a Pokémon card.
+ * @param {number} i - The index of the Pokémon card.
+ */
 async function openCard(i) {
   let card = document.getElementById("detailCard");
   card.classList.remove("d_none");
@@ -39,44 +49,78 @@ async function openCard(i) {
   renderChart();
 }
 
-// Executable Functions //
-
+/**
+ * Loads more Pokémon data onto the webpage.
+ */
 async function loadMore() {
   count += 50;
   startCount += 50;
   await renderPkmnData();
 }
 
+/**
+ * Switches to the left adjacent Pokémon card.
+ * @param {number} i - The index of the current Pokémon card.
+ */
 function switchLeft(i) {
   openCard(--i);
 }
 
+/**
+ * Switches to the right adjacent Pokémon card.
+ * @param {number} i - The index of the current Pokémon card.
+ */
 function switchRight(i) {
   openCard(++i);
 }
 
+/**
+ * Prevents the Pokémon card detail from closing when clicked.
+ * @param {Event} e - The event object.
+ */
 function doNotClose(e) {
   e.stopPropagation();
 }
 
 // Data Functions //
 
+/**
+ * Retrieves the Pokémon ID.
+ * @param {Object} pkmnData - The Pokémon data object.
+ * @returns {string} The Pokémon ID.
+ */
 let pkmnId = (pkmnData) => {
   return `#${pkmnData.id.toString().padStart(3, "0")}`;
 };
 
+/**
+ * Retrieves the Pokémon name.
+ * @param {Object} pkmnData - The Pokémon data object.
+ * @returns {string} The Pokémon name.
+ */
 let pkmnName = (pkmnData) => {
   return pkmnData.name.charAt(0).toUpperCase() + pkmnData.name.slice(1);
 };
 
+/**
+ * Retrieves the color associated with the Pokémon type.
+ * @param {Object} pkmnData - The Pokémon data object.
+ * @param {number} typeNumber - The index of the type.
+ * @returns {string} The color associated with the Pokémon type.
+ */
 let pkmnColor = (pkmnData, typeNumber) => {
   let type = pkmnData.types[typeNumber]
     ? pkmnData.types[typeNumber].type.name
     : "";
-  let backgroundColor = typeColors3[type] || "#CCCCCC";
+  let backgroundColor = typeColors[type] || "#CCCCCC";
   return backgroundColor;
 };
 
+/**
+ * Retrieves the Pokémon types.
+ * @param {Object} pkmnData - The Pokémon data object.
+ * @returns {Object} An object containing the primary and secondary Pokémon types.
+ */
 let pkmnTypes = (pkmnData) => {
   let primaryType =
     pkmnData.types.length > 0
@@ -92,22 +136,47 @@ let pkmnTypes = (pkmnData) => {
   return { primaryType, secondaryType };
 };
 
+/**
+ * Retrieves the front image URL of the Pokémon.
+ * @param {Object} pkmnData - The Pokémon data object.
+ * @returns {string} The URL of the front image of the Pokémon.
+ */
 let pkmnImg = (pkmnData) => {
   return pkmnData.sprites.front_default;
 };
 
+/**
+ * Retrieves the back image URL of the Pokémon.
+ * @param {Object} pkmnData - The Pokémon data object.
+ * @returns {string} The URL of the back image of the Pokémon.
+ */
 let pkmnImgBack = (pkmnData) => {
   return pkmnData.sprites.back_default;
 };
 
+/**
+ * Retrieves the official artwork front image URL of the Pokémon.
+ * @param {Object} pkmnData - The Pokémon data object.
+ * @returns {string} The URL of the official artwork front image of the Pokémon.
+ */
 let pkmnImg2 = (pkmnData) => {
   return pkmnData.sprites.other["official-artwork"].front_default;
 };
 
+/**
+ * Retrieves the shiny front image URL of the Pokémon.
+ * @param {Object} pkmnData - The Pokémon data object.
+ * @returns {string} The URL of the shiny front image of the Pokémon.
+ */
 let pkmnImgShiny = (pkmnData) => {
   return pkmnData.sprites.other["official-artwork"].front_shiny;
 };
 
+/**
+ * Retrieves the GIF image URL of the Pokémon.
+ * @param {Object} pkmnData - The Pokémon data object.
+ * @returns {string} The URL of the GIF image of the Pokémon.
+ */
 let pkmnImgGif = (pkmnData) => {
   return pkmnData.sprites.other.showdown.front_default;
 };
