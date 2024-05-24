@@ -17,7 +17,7 @@
   top: 50%;
   left: 50%;
   width: 400px;
-  height: 90vh;
+  height: auto;
   padding: 1rem;
   border-radius: 1.5rem;
   border-top: 3px solid rgb(255, 255, 255);
@@ -127,6 +127,33 @@
 .statsContainer {
   background-color: var(--backgroundColor);
   border: 1px solid var(--backgroundColor);
+  width: 100%;
   border-radius: 10px;
   padding-top: 32px;
+  display: flex;
+  justify-content: center;
+
+  canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .detail_container {
+    width: 300px;
+  }
+
+  .img_container {
+    .detail_img {
+      width: 200px;
+    }
+  }
+
+  .statsContainer {
+
+    canvas {
+      height: 200px !important; 
+    }
+  }
 }

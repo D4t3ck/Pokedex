@@ -20,10 +20,8 @@ async function includeHTML() {
  * Renders a bar chart displaying the basic stats of the current Pokémon.
  */
 function renderChart() {
-  const ctx = document.getElementById("myChart");
+  const ctx = document.getElementById("myChart").getContext("2d");
   if (ctx) {
-    ctx.height = 200;
-
     new Chart(ctx, {
       type: "bar",
       data: {
@@ -44,6 +42,8 @@ function renderChart() {
         ],
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         indexAxis: "y",
       },
     });
@@ -51,3 +51,4 @@ function renderChart() {
     console.error("Chart canvas not found");
   }
 }
+
