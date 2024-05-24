@@ -96,7 +96,7 @@ async function monitorInput() {
           const selectedText = event.target.textContent;
           const selectedName = selectedText.substring(selectedText.indexOf(' ') + 1);
           searchInput.value = selectedName;
-         /*  search(); */
+          search();
         }
       });
     } catch (error) {

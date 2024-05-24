@@ -135,6 +135,7 @@ footer div:nth-child(3) .imprint {
 }
 footer div:nth-child(3) .imprint:first-child .close_imprint {
   width: 40px;
+  height: auto;
   margin-left: auto;
   text-align: center;
   font-size: 2.5rem;

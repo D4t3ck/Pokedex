@@ -17,8 +17,10 @@
           user-select: none;
 }
 
-html {
+html,
+body {
   scrollbar-width: thin;
+  scrollbar-color: var(--buttonColor) var(--backgroundColor);
 }
 
 body {
@@ -164,6 +166,7 @@ main .arrow_up_container img:hover {
   justify-content: center;
   align-items: center;
   gap: 0px;
+  width: auto;
   height: 2rem;
   padding: 0 0.4rem;
   border: 1px solid var(--backgroundColor);
@@ -188,16 +191,17 @@ main .arrow_up_container img:hover {
 }
 
 #suggestions {
-  position: absolute;
-  z-index: 100;
   width: 10rem;
   height: 7rem;
+  position: absolute;
+  z-index: 100;
   margin-top: 0.5rem;
-  background-color: black;
-  color: white;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: var(--backgroundColor);
   text-align: center;
-  scrollbar-width: thin;
   overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--buttonColor) rgba(255, 255, 255, 0);
 }
 
 /********** MEDIAQUERY ***********/

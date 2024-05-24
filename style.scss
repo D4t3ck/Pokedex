@@ -47,8 +47,10 @@
   user-select: none;
 }
 
-html {
+html,
+body {
   scrollbar-width: thin;
+  scrollbar-color: var(--buttonColor) var(--backgroundColor);
 }
 
 body {
