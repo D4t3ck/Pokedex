@@ -1,10 +1,5 @@
 @import "../style.scss";
 
-main {
-  @include flexbox($fd: column, $g: 1rem);
-  padding: 1rem;
-}
-
 .content_container {
   display: flex;
   justify-content: space-evenly;
@@ -18,7 +13,7 @@ main {
   background: url(/assets/img/bg.png) no-repeat;
   background-size: 120%;
   background-position: right -25px bottom;
-  margin: 12px 0px 12px 0px;
+  margin: 12px 8px 12px 8px;
   border-radius: 10px;
   border: 1px solid rgb(0, 0, 0, 0.1);
   box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
