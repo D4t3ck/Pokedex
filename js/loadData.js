@@ -47,11 +47,11 @@ async function openCard(i) {
  */
 async function loadMore() {
   let button = document.getElementById("loadMore");
-  button.disabled = true;
+  button.classList.add("hidden");
   count += 50;
   startCount += 50;
   await renderPkmnData();
-  button.disabled = false;
+  button.classList.remove("hidden");
 }
 
 /**
