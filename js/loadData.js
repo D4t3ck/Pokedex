@@ -5,17 +5,6 @@ let startCount = 1;
 let i = 0;
 
 /**
- * Fetches Pokémon data from the PokeAPI.
- */
-async function fetchApi() {
-  let url = "https://pokeapi.co/api/v2/pokemon/1";
-  let response = await fetch(url);
-  data = await response.json();
-  console.log(" %c Loaded pokemon", "color: orange");
-  console.log(data);
-}
-
-/**
  * Renders Pokémon data onto the webpage.
  */
 async function renderPkmnData() {

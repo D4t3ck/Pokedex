@@ -5,7 +5,6 @@
 async function init() {
   includeHTML();
   await renderPkmnData();
-  fetchApi();
   searchForm();
   monitorInput();
 }
