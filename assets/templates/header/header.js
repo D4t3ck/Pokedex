@@ -40,6 +40,7 @@ async function search() {
 
     document.getElementById("search").value = "";
     document.getElementById("suggestions").innerHTML = "";
+    document.getElementById('clearBtn').classList.add("d_none");
   } catch (error) {
     alert(error.message);
   }
@@ -187,6 +188,7 @@ async function monitorInput() {
  */
 function clearSearch() {
   document.getElementById("suggestions").classList.add("d_none");
+  document.getElementById('clearBtn').classList.add("d_none");
   document.getElementById("search").value = "";
 }
 
@@ -197,5 +199,6 @@ function toggleSuggestionBox() {
   let input = document.getElementById("search");
   if (input.value !== "") {
     document.getElementById("suggestions").classList.remove("d_none");
+    document.getElementById('clearBtn').classList.remove("d_none");
   }
 }
