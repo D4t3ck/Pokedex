@@ -72,3 +72,31 @@ function showShiny(i) {
     shinyImg.classList.toggle("d_none");
   }
 }
+
+/**
+ * Shows the loader element by removing the 'hidden' class.
+ * Assumes there is an element with id 'loader' in the DOM.
+ */
+function showLoader() {
+  let loader = document.getElementById("loader");
+  if (loader) {
+    loader.classList.remove("hidden");
+  }
+}
+
+/**
+ * Hides the loader element by adding the 'hidden' class.
+ * Assumes there is an element with id 'loader' in the DOM.
+ */
+function hideLoader() {
+  let loader = document.getElementById("loader");
+  if (loader) {
+    loader.classList.add("hidden");
+  }
+}
+
+function hideLoadMoreBtn() {
+  button = document.getElementById("loadMore");
+
+  button.classList.add("d_none");
+}

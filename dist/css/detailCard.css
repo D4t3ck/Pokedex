@@ -98,23 +98,6 @@ main .arrow_up_container img:hover {
   cursor: pointer;
 }
 
-.loader {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0px;
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  background-color: var(--backgroundColor);
-  z-index: 1000;
-}
-
 .detail_card {
   display: flex;
   flex-direction: row;

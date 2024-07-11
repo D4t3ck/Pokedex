@@ -34,48 +34,67 @@ async function renderDex(startCount, count) {
 }
 
 async function renderKantoDex() {
+  showLoader();
   clearContent();
   await renderDex(1, 152);
+  hideLoader();
+  hideLoadMoreBtn();
 }
 
 async function renderJohtoDex() {
+  showLoader();
   clearContent();
   await renderDex(152, 252);
+  hideLoader();
 }
 
 async function renderHoennDex() {
+  showLoader();
   clearContent();
   await renderDex(252, 387);
+  hideLoader();
 }
 
 async function renderSinnohDex() {
+  showLoader();
   clearContent();
   await renderDex(387, 495);
+  hideLoader();
 }
 
 async function renderUnovaDex() {
+  showLoader();
   clearContent();
   await renderDex(495, 650);
+  hideLoader();
 }
 
 async function renderKalosDex() {
+  showLoader();
   clearContent();
   await renderDex(650, 722);
+  hideLoader();
 }
 
 async function renderAlolaDex() {
+  showLoader();
   clearContent();
   await renderDex(722, 810);
+  hideLoader();
 }
 
 async function renderGalarDex() {
+  showLoader();
   clearContent();
   await renderDex(810, 906);
+  hideLoader();
 }
 
 async function renderPaldeaDex() {
+  showLoader();
   clearContent();
   await renderDex(906, 1026);
+  hideLoader();
 }
 
 /**
@@ -103,12 +122,11 @@ async function openCard(i) {
  * @returns {Promise<void>} A Promise that resolves once the Pokémon data is rendered.
  */
 async function loadMore() {
-  let button = document.getElementById("loadMore");
-  button.classList.add("hidden");
+  showLoader();
   count += 50;
   startCount += 50;
   await renderPkmnData();
-  button.classList.remove("hidden");
+  hideLoader();
 }
 
 function clearContent() {

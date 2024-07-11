@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./dist/css/style.css " />
     <link rel="stylesheet" href="./dist/css/main.css" />
     <link rel="stylesheet" href="./dist/css/detailCard.css" />
+    <link rel="stylesheet" href="./dist/css/loader.css" />
     <link rel="stylesheet" href="./dist/css/footer.css" />
     <link
       rel="shortcut icon"
@@ -18,7 +19,6 @@
   </head>
 
   <body onload="init()">
-
     <header include-html="./assets/templates/header/header.html"></header>
 
     <main>
@@ -59,10 +59,16 @@
         class="detail_card d_none"
         onclick="closeCard()"
       ></div>
-      
     </main>
-    
-    
+
+    <div class="loader hidden" id="loader">
+      <img src="./assets/img/loader.png" alt="Loading" />
+
+      <div>
+        <span>loading Dex</span>
+        <div class="dot-flashing"></div>
+      </div>
+    </div>
 
     <footer include-html="./assets/templates/footer/footer.html"></footer>
 

@@ -1,0 +1,88 @@
+@import "../style.scss";
+
+.loader {
+  @include flexbox($fd: column);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: #333333;
+  z-index: 1000;
+  /* visibility: hidden; */
+
+  img {
+    animation: rotate 2s linear infinite;
+    width: 200px;
+    height: 200px;
+  }
+
+  > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+
+    > span {
+      color: var(--backgroundColor);
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.dot-flashing {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  background-color: #9880ff;
+  color: #9880ff;
+  animation: dot-flashing 1s infinite linear alternate;
+  animation-delay: 0.5s;
+}
+.dot-flashing::before,
+.dot-flashing::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+.dot-flashing::before {
+  left: -25px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  background-color: #9880ff;
+  color: #9880ff;
+  animation: dot-flashing 1s infinite alternate;
+  animation-delay: 0s;
+}
+.dot-flashing::after {
+  left: 25px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  background-color: #9880ff;
+  color: #9880ff;
+  animation: dot-flashing 1s infinite alternate;
+  animation-delay: 1s;
+}
+
+@keyframes dot-flashing {
+  0% {
+    background-color: #9880ff;
+  }
+  50%,
+  100% {
+    background-color: rgba(152, 128, 255, 0.2);
+  }
+}
