@@ -33,7 +33,7 @@ body {
 }
 
 .hidden {
-  visibility: hidden;
+  visibility: visible;
 }
 
 hr {
@@ -113,6 +113,9 @@ main .arrow_up_container img:hover {
 }
 .header > img {
   height: 4rem;
+}
+.header > img:hover {
+  cursor: pointer;
 }
 .header form {
   position: relative;

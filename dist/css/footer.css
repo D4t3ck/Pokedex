@@ -33,7 +33,7 @@ body {
 }
 
 .hidden {
-  visibility: hidden;
+  visibility: visible;
 }
 
 hr {

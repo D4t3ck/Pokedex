@@ -30,6 +30,7 @@
         />
       </div>
       <div>
+        <button onclick="renderAll()">All</button>
         <button onclick="renderKantoDex()">Kanto</button>
         <button onclick="renderJohtoDex()">Johto</button>
         <button onclick="renderHoennDex()">Hoenn</button>
@@ -59,16 +60,19 @@
         class="detail_card d_none"
         onclick="closeCard()"
       ></div>
+
+      <div class="loader hidden" id="loader">
+        <img src="./assets/img/loader4.png" alt="Loading" />
+  
+        <div>
+          <span>loading</span>
+          <div class="dot-flashing"></div>
+        </div>
+      </div>
+
     </main>
 
-    <div class="loader hidden" id="loader">
-      <img src="./assets/img/loader.png" alt="Loading" />
-
-      <div>
-        <span>loading Dex</span>
-        <div class="dot-flashing"></div>
-      </div>
-    </div>
+    
 
     <footer include-html="./assets/templates/footer/footer.html"></footer>
 

@@ -33,6 +33,14 @@ async function renderDex(startCount, count) {
   }
 }
 
+async function renderAll() {
+  showLoader();
+  clearContent();
+  await renderDex(1, 51);
+  hideLoader();
+  showLoadMoreBtn();
+}
+
 async function renderKantoDex() {
   showLoader();
   clearContent();
@@ -46,6 +54,7 @@ async function renderJohtoDex() {
   clearContent();
   await renderDex(152, 252);
   hideLoader();
+  hideLoadMoreBtn();
 }
 
 async function renderHoennDex() {
@@ -53,6 +62,7 @@ async function renderHoennDex() {
   clearContent();
   await renderDex(252, 387);
   hideLoader();
+  hideLoadMoreBtn();
 }
 
 async function renderSinnohDex() {
@@ -60,6 +70,7 @@ async function renderSinnohDex() {
   clearContent();
   await renderDex(387, 495);
   hideLoader();
+  hideLoadMoreBtn();
 }
 
 async function renderUnovaDex() {
@@ -67,6 +78,7 @@ async function renderUnovaDex() {
   clearContent();
   await renderDex(495, 650);
   hideLoader();
+  hideLoadMoreBtn();
 }
 
 async function renderKalosDex() {
@@ -74,6 +86,7 @@ async function renderKalosDex() {
   clearContent();
   await renderDex(650, 722);
   hideLoader();
+  hideLoadMoreBtn();
 }
 
 async function renderAlolaDex() {
@@ -81,6 +94,7 @@ async function renderAlolaDex() {
   clearContent();
   await renderDex(722, 810);
   hideLoader();
+  hideLoadMoreBtn();
 }
 
 async function renderGalarDex() {
@@ -88,6 +102,7 @@ async function renderGalarDex() {
   clearContent();
   await renderDex(810, 906);
   hideLoader();
+  hideLoadMoreBtn();
 }
 
 async function renderPaldeaDex() {
@@ -95,6 +110,7 @@ async function renderPaldeaDex() {
   clearContent();
   await renderDex(906, 1026);
   hideLoader();
+  hideLoadMoreBtn();
 }
 
 /**
@@ -113,6 +129,7 @@ async function openCard(i) {
   card.innerHTML = openDetailCard(currentCard, i);
   renderChart();
   stopSwitchLeft(i);
+  stopSwitchRight(i);
 }
 
 /**
@@ -127,6 +144,7 @@ async function loadMore() {
   startCount += 50;
   await renderPkmnData();
   hideLoader();
+  scrollDown();
 }
 
 function clearContent() {
@@ -141,6 +159,12 @@ function clearContent() {
 function stopSwitchLeft(i) {
   if (i === 1) {
     document.getElementById("arrowLeft").classList.add("hidden");
+  }
+}
+
+function stopSwitchRight(i) {
+  if (i === 1025) {
+    document.getElementById("arrowRight").classList.add("hidden");
   }
 }
 

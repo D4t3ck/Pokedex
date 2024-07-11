@@ -91,7 +91,7 @@ function openDetailCard(currentCard, i) {
         currentCard
         )}" alt="Pokemon Shiny Image">
 
-        <div onclick="switchRight(${i})">&gt;</div>
+        <div id="arrowRight" onclick="switchRight(${i})">&gt;</div>
       </div>
 
       <div class="statsContainer">

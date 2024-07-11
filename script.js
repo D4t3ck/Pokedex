@@ -3,10 +3,12 @@
  * @returns {Promise<void>} A promise that resolves when initialization is complete.
  */
 async function init() {
+  showLoader();
   includeHTML();
   await renderPkmnData();
   searchForm();
   monitorInput();
+  hideLoader();
 }
 
 /**
@@ -99,4 +101,10 @@ function hideLoadMoreBtn() {
   button = document.getElementById("loadMore");
 
   button.classList.add("d_none");
+}
+
+function showLoadMoreBtn() {
+  button = document.getElementById("loadMore");
+
+  button.classList.remove("d_none");
 }
