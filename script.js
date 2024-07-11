@@ -97,14 +97,18 @@ function hideLoader() {
   }
 }
 
+/**
+ * Hides the "Load More" button by adding the "d_none" class.
+ */
 function hideLoadMoreBtn() {
-  button = document.getElementById("loadMore");
-
+  const button = document.getElementById("loadMore");
   button.classList.add("d_none");
 }
 
+/**
+ * Shows the "Load More" button by removing the "d_none" class.
+ */
 function showLoadMoreBtn() {
-  button = document.getElementById("loadMore");
-
+  const button = document.getElementById("loadMore");
   button.classList.remove("d_none");
 }

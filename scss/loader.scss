@@ -1,7 +1,7 @@
 @import "../style.scss";
 
 .loader {
-  @include flexbox($fd: column);
+  @include flexbox($fd: column, $g: 2rem);
   position: absolute;
   top: 0;
   left: 0;
@@ -10,19 +10,14 @@
   background-color: #333333;
   background-color: rgba(0, 0, 0, 0.9);
   z-index: 1000;
-  
 
   img {
+    @include box(250px);
     animation: rotate 2s linear infinite;
-    width: 250px;
-    height: 250px;
   }
 
   > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
+    @include flexbox($g: 3rem);
 
     > span {
       color: var(--backgroundColor);
@@ -41,9 +36,8 @@
 }
 
 .dot-flashing {
+  @include box(15px);
   position: relative;
-  width: 15px;
-  height: 15px;
   border-radius: 50px;
   background-color: #9880ff;
   color: #9880ff;
@@ -58,9 +52,8 @@
   top: 0;
 }
 .dot-flashing::before {
+  @include box(15px);
   left: -25px;
-  width: 15px;
-  height: 15px;
   border-radius: 50px;
   background-color: #9880ff;
   color: #9880ff;
@@ -68,9 +61,8 @@
   animation-delay: 0s;
 }
 .dot-flashing::after {
+  @include box(15px);
   left: 25px;
-  width: 15px;
-  height: 15px;
   border-radius: 50px;
   background-color: #9880ff;
   color: #9880ff;
@@ -85,5 +77,13 @@
   50%,
   100% {
     background-color: rgba(152, 128, 255, 0.2);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .loader {
+    img {
+      @include box(200px);
+    }
   }
 }
