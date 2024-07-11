@@ -17,8 +17,10 @@
           user-select: none;
 }
 
-html {
+html,
+body {
   scrollbar-width: thin;
+  scrollbar-color: var(--buttonColor) var(--backgroundColor);
 }
 
 body {
@@ -30,10 +32,24 @@ body {
   display: none !important;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 hr {
   background-color: var(--backgroundColor);
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 1920px;
+  margin: 0 auto;
+}
 main .arrow_down_container {
   display: flex;
   flex-direction: row;
@@ -82,7 +98,24 @@ main .arrow_up_container img:hover {
   cursor: pointer;
 }
 
-footer {
+.loader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--backgroundColor);
+  z-index: 1000;
+}
+
+.footer {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -94,20 +127,20 @@ footer {
   background-color: var(--mainColor);
   box-shadow: 0px -1px 10px 0px rgba(0, 0, 0, 0.5);
 }
-footer span:first-child {
+.footer span:first-child {
   font-family: var(--mainFont);
   color: var(--backgroundColor);
   text-shadow: 3px 3px 5px rgb(0, 0, 0);
 }
-footer span:first-child:hover {
+.footer span:first-child:hover {
   cursor: pointer;
 }
-footer span:nth-child(2) {
+.footer span:nth-child(2) {
   font-family: var(--mainFont);
   color: var(--backgroundColor);
   text-shadow: 3px 3px 5px rgb(0, 0, 0);
 }
-footer div:nth-child(3) {
+.footer div:nth-child(3) {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -121,7 +154,7 @@ footer div:nth-child(3) {
   z-index: 100;
   background-color: rgba(0, 0, 0, 0.5);
 }
-footer div:nth-child(3) .imprint {
+.footer div:nth-child(3) .imprint {
   width: 100%;
   height: 90vh;
   margin-inline: 1rem;
@@ -133,7 +166,7 @@ footer div:nth-child(3) .imprint {
   background-color: var(--backgroundColor);
   border-radius: 5px;
 }
-footer div:nth-child(3) .imprint:first-child .close_imprint {
+.footer div:nth-child(3) .imprint:first-child .close_imprint {
   width: 40px;
   height: auto;
   margin-left: auto;
@@ -142,10 +175,10 @@ footer div:nth-child(3) .imprint:first-child .close_imprint {
   color: var(--buttonColor);
   text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.8);
 }
-footer div:nth-child(3) .imprint:first-child .close_imprint:hover {
+.footer div:nth-child(3) .imprint:first-child .close_imprint:hover {
   cursor: pointer;
   color: var(--buttonColorHover);
 }
-footer div:nth-child(3) .imprint .imprint_content {
+.footer div:nth-child(3) .imprint .imprint_content {
   padding: 0 1rem 1rem 1rem;
-}/*# sourceMappingURL=footer.css.map */
+}

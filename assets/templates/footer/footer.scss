@@ -1,6 +1,6 @@
 @import "../../../style.scss";
 
-footer {
+.footer {
   @include flexbox($jc: space-evenly);
   @include box(100%, 80px);
   padding: 1rem;

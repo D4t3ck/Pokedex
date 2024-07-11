@@ -184,7 +184,7 @@ async function monitorInput() {
 }
 
 /**
- * Clears the search input and hides the suggestions.
+ * Clears the search input and hides the suggestions and clear Button.
  */
 function clearSearch() {
   document.getElementById("suggestions").classList.add("d_none");
@@ -193,7 +193,7 @@ function clearSearch() {
 }
 
 /**
- * Toggles the visibility of the search suggestions.
+ * Toggles the visibility of the search suggestions and clear Button.
  */
 function toggleSuggestionBox() {
   let input = document.getElementById("search");

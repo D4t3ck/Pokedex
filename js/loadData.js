@@ -4,21 +4,78 @@ let count = 51;
 let startCount = 1;
 let i = 0;
 
-/**
- * Renders Pokémon data onto the webpage.
- */
+async function fetchPkmnData(id) {
+  let url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+  let response = await fetch(url);
+  let pkmnData = await response.json();
+  return pkmnData;
+}
+
 async function renderPkmnData() {
   let content = document.getElementById("content");
 
   for (let i = startCount; i < count; i++) {
-    let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-    let response = await fetch(url);
-    let pkmnData = await response.json();
-
+    let pkmnData = await fetchPkmnData(i);
     pkmnDataArray.push(pkmnData);
 
     content.innerHTML += pkmnCard(pkmnData, i);
   }
+}
+
+async function renderDex(startCount, count) {
+  let content = document.getElementById("content");
+
+  for (let i = startCount; i < count; i++) {
+    let pkmnData = await fetchPkmnData(i);
+    pkmnDataArray.push(pkmnData);
+
+    content.innerHTML += pkmnCard(pkmnData, i);
+  }
+}
+
+async function renderKantoDex() {
+  clearContent();
+  await renderDex(1, 152);
+}
+
+async function renderJohtoDex() {
+  clearContent();
+  await renderDex(152, 252);
+}
+
+async function renderHoennDex() {
+  clearContent();
+  await renderDex(252, 387);
+}
+
+async function renderSinnohDex() {
+  clearContent();
+  await renderDex(387, 495);
+}
+
+async function renderUnovaDex() {
+  clearContent();
+  await renderDex(495, 650);
+}
+
+async function renderKalosDex() {
+  clearContent();
+  await renderDex(650, 722);
+}
+
+async function renderAlolaDex() {
+  clearContent();
+  await renderDex(722, 810);
+}
+
+async function renderGalarDex() {
+  clearContent();
+  await renderDex(810, 906);
+}
+
+async function renderPaldeaDex() {
+  clearContent();
+  await renderDex(906, 1026);
 }
 
 /**
@@ -52,6 +109,10 @@ async function loadMore() {
   startCount += 50;
   await renderPkmnData();
   button.classList.remove("hidden");
+}
+
+function clearContent() {
+  document.getElementById("content").innerHTML = "";
 }
 
 /**
@@ -89,7 +150,7 @@ function doNotClose(e) {
   e.stopPropagation();
 }
 
-// Data Functions //
+///// Data Functions /////
 
 /**
  * Retrieves the Pokémon ID.
