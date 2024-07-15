@@ -76,24 +76,28 @@ function showShiny(i) {
 }
 
 /**
- * Shows the loader element by removing the 'hidden' class.
- * Assumes there is an element with id 'loader' in the DOM.
+ * Displays the loader by removing the "d_none" class from the loader element.
+ * Logs an error if the loader element is not found.
  */
 function showLoader() {
   let loader = document.getElementById("loader");
   if (loader) {
-    loader.classList.remove("hidden");
+    loader.classList.remove("d_none");
+  } else {
+    console.error("Loader element not found");
   }
 }
 
 /**
- * Hides the loader element by adding the 'hidden' class.
- * Assumes there is an element with id 'loader' in the DOM.
+ * Hides the loader by adding the "d_none" class to the loader element.
+ * Logs an error if the loader element is not found.
  */
 function hideLoader() {
   let loader = document.getElementById("loader");
   if (loader) {
-    loader.classList.add("hidden");
+    loader.classList.add("d_none");
+  } else {
+    console.error("Loader element not found");
   }
 }
 

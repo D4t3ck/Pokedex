@@ -33,14 +33,14 @@ body {
 }
 
 .hidden {
-  visibility: visible;
+  visibility: hidden !important;
 }
 
 hr {
   background-color: var(--backgroundColor);
 }
 
-main {
+.main {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,7 +50,7 @@ main {
   max-width: 1920px;
   margin: 0 auto;
 }
-main .arrow_down_container {
+.main .arrow_down_container {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -58,21 +58,21 @@ main .arrow_down_container {
   gap: 0px;
   width: 100%;
 }
-main .arrow_down_container img {
+.main .arrow_down_container img {
   margin-left: 2rem;
   rotate: 180deg;
 }
-main .arrow_down_container img:hover {
+.main .arrow_down_container img:hover {
   cursor: pointer;
 }
-main .btn_container {
+.main .btn_container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 0px;
 }
-main .btn_container .load_btn {
+.main .btn_container .load_btn {
   padding: 1rem;
   border: unset;
   background-color: var(--buttonColor);
@@ -81,12 +81,12 @@ main .btn_container .load_btn {
   border-radius: 10px;
   box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
 }
-main .btn_container .load_btn:hover {
+.main .btn_container .load_btn:hover {
   cursor: pointer;
   background-color: var(--buttonColorHover);
   scale: 1.1;
 }
-main .arrow_up_container {
+.main .arrow_up_container {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -94,7 +94,7 @@ main .arrow_up_container {
   gap: 0px;
   width: 100%;
 }
-main .arrow_up_container img:hover {
+.main .arrow_up_container img:hover {
   cursor: pointer;
 }
 

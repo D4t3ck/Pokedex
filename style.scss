@@ -63,14 +63,14 @@ body {
 }
 
 .hidden {
-  visibility: visible;
+  visibility: hidden !important;
 }
 
 hr {
   background-color: var(--backgroundColor);
 }
 
-main {
+.main {
   @include flexbox($fd: column, $g: 1rem);
   padding: 1rem;
   max-width: 1920px;

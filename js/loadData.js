@@ -78,13 +78,13 @@ function clearContent() {
  */
 function stopSwitchLeft(i) {
   if (i === 1) {
-    document.getElementById("arrowLeft").classList.add("hidden");
+    document.getElementById("arrowLeft").classList.add("d_none");
   }
 }
 
 function stopSwitchRight(i) {
   if (i === 1025) {
-    document.getElementById("arrowRight").classList.add("hidden");
+    document.getElementById("arrowRight").classList.add("d_none");
   }
 }
 
