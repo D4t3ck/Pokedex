@@ -62,18 +62,34 @@ async function renderDex(startCount, count) {
  */
 async function openCard(i) {
   let card = document.getElementById("detailCard");
+
+  // Show a loading indicator while fetching the data
+  card.innerHTML = '<div class="loading">Loading...</div>';
   card.classList.remove("d_none");
   setModalState(true);
 
-  let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-  let response = await fetch(url);
-  currentCard = await response.json();
+  try {
+    // Fetch the Pokémon data
+    let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+    let response = await fetch(url);
+    currentCard = await response.json();
 
-  card.innerHTML = openDetailCard(currentCard, i);
-  renderChart();
-  stopSwitchLeft(i);
-  stopSwitchRight(i);
+    // Prepare the detailed view
+    let detailContent = openDetailCard(currentCard, i);
+
+    // Use a requestAnimationFrame to ensure the content is rendered before applying the class
+    requestAnimationFrame(() => {
+      card.innerHTML = detailContent;
+      renderChart();
+      stopSwitchLeft(i);
+      stopSwitchRight(i);
+    });
+  } catch (error) {
+    console.error('Error fetching Pokémon data:', error);
+    card.innerHTML = '<div class="error">Error loading data. Please try again later.</div>';
+  }
 }
+
 
 /**
  * Asynchronous function to load more Pokémon data.

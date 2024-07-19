@@ -9,7 +9,7 @@
 
 .pkmn_card {
   @include flexbox($fd: column);
-  @include box(270px, 200px);
+  @include box(270px, 220px);
   background: url(/assets/img/bg.png) no-repeat;
   background-size: 120%;
   background-position: right -25px bottom;
