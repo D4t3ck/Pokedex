@@ -21,6 +21,7 @@ html,
 body {
   scrollbar-width: thin;
   scrollbar-color: var(--buttonColor) var(--backgroundColor);
+  scrollbar-gutter: stable;
 }
 
 body {

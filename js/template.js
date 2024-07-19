@@ -10,7 +10,7 @@ function pkmnCard(pkmnData, i) {
       pkmnData,
       0
     )}" >
-        <img class="open_card" onclick="openCard(${i})" src="../assets/img/open_card.png" alt="">
+      <img class="open_card" onclick="openCard(${i})" src="assets/img/open_card.png" alt="Open Card">
       <div class="card_head">
         <div class="pkmn_id">${pkmnId(pkmnData)}</div>
       </div>

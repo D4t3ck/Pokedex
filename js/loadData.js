@@ -4,6 +4,11 @@ let count = 51;
 let startCount = 1;
 let i = 0;
 
+/**
+ * Fetch Pokémon data from the PokéAPI.
+ * @param {number} id - The ID of the Pokémon to fetch.
+ * @returns {Promise<Object>} - A promise that resolves to the Pokémon data.
+ */
 async function fetchPkmnData(id) {
   let url = `https://pokeapi.co/api/v2/pokemon/${id}`;
   let response = await fetch(url);
@@ -11,26 +16,44 @@ async function fetchPkmnData(id) {
   return pkmnData;
 }
 
+/**
+ * Render Pokémon data from startCount to count.
+ * Fetches data in parallel and renders it to the content element.
+ */
 async function renderPkmnData() {
   let content = document.getElementById("content");
 
+  let promises = [];
   for (let i = startCount; i < count; i++) {
-    let pkmnData = await fetchPkmnData(i);
-    pkmnDataArray.push(pkmnData);
-
-    content.innerHTML += pkmnCard(pkmnData, i);
+    promises.push(fetchPkmnData(i));
   }
+
+  let pkmnDataArray = await Promise.all(promises);
+
+  pkmnDataArray.forEach((pkmnData, index) => {
+    content.innerHTML += pkmnCard(pkmnData, startCount + index);
+  });
 }
 
+/**
+ * Render a range of Pokémon data.
+ * Fetches data in parallel and renders it to the content element.
+ * @param {number} startCount - The starting ID of the Pokémon to fetch.
+ * @param {number} count - The ending ID of the Pokémon to fetch (exclusive).
+ */
 async function renderDex(startCount, count) {
   let content = document.getElementById("content");
 
+  let promises = [];
   for (let i = startCount; i < count; i++) {
-    let pkmnData = await fetchPkmnData(i);
-    pkmnDataArray.push(pkmnData);
-
-    content.innerHTML += pkmnCard(pkmnData, i);
+    promises.push(fetchPkmnData(i));
   }
+
+  let pkmnDataArray = await Promise.all(promises);
+
+  pkmnDataArray.forEach((pkmnData, index) => {
+    content.innerHTML += pkmnCard(pkmnData, startCount + index);
+  });
 }
 
 /**
