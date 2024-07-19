@@ -20,6 +20,17 @@
     text-shadow: 3px 3px 5px rgb(0, 0, 0, 1);
   }
 
+  @keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
   div:nth-child(3) {
     @include flexbox;
     position: fixed;
@@ -42,6 +53,7 @@
       border-radius: 30px 0 0 30px;
       overflow: hidden;
       scrollbar-gutter: stable;
+      animation: slideInFromRight 0.5s ease-out;
 
       &:hover {
         overflow-y: auto;
@@ -52,7 +64,7 @@
           @include box(40px, auto);
           margin-left: auto;
           text-align: center;
-          font-size: 2.0rem;
+          font-size: 2rem;
           color: var(--buttonColor);
           text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.8);
 
