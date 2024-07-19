@@ -159,7 +159,11 @@ async function monitorInput() {
     const suggestionsList = pokemonList
       .map((pokemon) => {
         const pokemonId = getPokemonId(pokemon.url);
-        return `<div class="suggestion">#${pokemonId} ${pokemon.name}</div>`;
+        return /* html */`<div class="suggestion">
+        <div class="suggestions">#${pokemonId} ${pokemon.name}</div>
+        </div>
+        
+        `;
       })
       .join("");
 
@@ -172,7 +176,7 @@ async function monitorInput() {
    * @param {Event} event - The click event.
    */
   function handleSuggestionClick(event) {
-    if (event.target.classList.contains("suggestion")) {
+    if (event.target.classList.contains("suggestions")) {
       const selectedText = event.target.textContent;
       const selectedName = selectedText.substring(
         selectedText.indexOf(" ") + 1

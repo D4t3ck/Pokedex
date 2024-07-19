@@ -8,6 +8,7 @@ async function init() {
   await renderPkmnData();
   searchForm();
   monitorInput();
+  renderDexButtons();
   hideLoader();
 }
 

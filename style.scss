@@ -91,7 +91,24 @@ hr {
     }
   }
 
-  .btn_container {
+  .dex_btn_container {
+  /*   @include randomBorder; */
+    display: flex;
+   /*  flex-direction: column; */
+
+    .dex_buttons {
+      @include curserPointer;
+      @include box(7rem, 2rem);
+      padding: 0.3rem;
+      margin: auto 0.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      font-weight: 600;
+      background-color: var(--mainColor);
+      color: var(--backgroundColor);
+    }
+  }
+
+  .load_btn_container {
     @include flexbox;
 
     .load_btn {

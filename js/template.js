@@ -17,7 +17,9 @@ function pkmnCard(pkmnData, i) {
   
       <div class="pkmn_info_container">
         <div class="pkmn_info">
-          <span onclick="openCard(${i})" class="pkmn_name">${pkmnName(pkmnData)}</span>
+          <span onclick="openCard(${i})" class="pkmn_name">${pkmnName(
+    pkmnData
+  )}</span>
           <div class="pkmn_type" style="background-color: ${pkmnColor(
             pkmnData,
             0

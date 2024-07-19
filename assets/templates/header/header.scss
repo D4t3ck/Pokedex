@@ -2,7 +2,7 @@
 
 .header {
   @include flexbox($jc: space-between);
-  @include box(100%, 5rem);
+  @include box(100%, auto);
   padding: 1rem;
   background-color: var(--mainColor);
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 5);
@@ -91,18 +91,24 @@
 }
 
 #suggestions {
-  @include box(10rem, 7rem);
+  @include box(13rem, 7rem);
   position: absolute;
   z-index: 100;
   margin-top: 0.5rem;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 5);
   color: var(--backgroundColor);
   text-align: center;
   overflow-y: scroll;
-  scrollbar-width: thin; 
+  scrollbar-width: thin;
   scrollbar-color: var(--buttonColor) rgba(255, 255, 255, 0);
-}
 
+  .suggestions {
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
 
 /********** MEDIAQUERY ***********/
 
