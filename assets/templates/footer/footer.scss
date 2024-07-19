@@ -31,7 +31,7 @@
     background-color: rgba(0, 0, 0, 0.5);
 
     .imprint {
-      @include box(100%, 90vh);
+      @include box(60%, 70vh);
       margin-inline: 1rem;
       padding: 1rem;
       text-wrap: wrap;
@@ -39,14 +39,20 @@
       overflow-y: scroll;
       scrollbar-width: thin;
       background-color: var(--backgroundColor);
-      border-radius: 5px;
+      border-radius: 30px 0 0 30px;
+      overflow: hidden;
+      scrollbar-gutter: stable;
+
+      &:hover {
+        overflow-y: auto;
+      }
 
       &:first-child {
         .close_imprint {
           @include box(40px, auto);
           margin-left: auto;
           text-align: center;
-          font-size: 2.5rem;
+          font-size: 2.0rem;
           color: var(--buttonColor);
           text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.8);
 
