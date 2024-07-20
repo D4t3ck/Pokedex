@@ -59,7 +59,7 @@ function openDetailCard(currentCard, i) {
       currentCard,
       0
     )}" class="detail_container" onclick="doNotClose(event)">
-      <div class="close" src="assets/img/close.png" alt="Close" onclick="closeCard()">&#x0058;</div>
+      <img class="close" onclick="closeCard()" src="assets/img/close.png" alt="Close">
       <div class="detail_info_container">
         <div class="detail_head">
           <div class="detail_id">${pkmnId(currentCard)}</div>

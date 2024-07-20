@@ -88,24 +88,25 @@
       }
     }
   }
-}
 
-#suggestions {
-  @include box(13rem, 7rem);
-  position: absolute;
-  z-index: 100;
-  margin-top: 0.5rem;
-  background-color: rgba(0, 0, 0, 5);
-  color: var(--backgroundColor);
-  text-align: center;
-  overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-color: var(--buttonColor) rgba(255, 255, 255, 0);
+  #suggestions {
+    @include box(13rem, 9.5rem);
+    position: absolute;
+    right: 70px;
+    z-index: 100;
+    margin-top: 0.05rem;
+    background-color: rgba(0, 0, 0, 5);
+    color: var(--backgroundColor);
+    text-align: center;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: var(--buttonColor) rgba(255, 255, 255, 0);
 
-  .suggestions {
-    &:hover {
-      cursor: pointer;
-      background-color: rgba(255, 255, 255, 0.2);
+    .suggestions {
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.2);
+      }
     }
   }
 }

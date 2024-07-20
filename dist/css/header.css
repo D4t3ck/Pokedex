@@ -225,13 +225,13 @@ hr {
   cursor: pointer;
   scale: 1.1;
 }
-
-#suggestions {
+.header #suggestions {
   width: 13rem;
-  height: 7rem;
+  height: 9.5rem;
   position: absolute;
+  right: 70px;
   z-index: 100;
-  margin-top: 0.5rem;
+  margin-top: 0.05rem;
   background-color: rgb(0, 0, 0);
   color: var(--backgroundColor);
   text-align: center;
@@ -239,7 +239,7 @@ hr {
   scrollbar-width: thin;
   scrollbar-color: var(--buttonColor) rgba(255, 255, 255, 0);
 }
-#suggestions .suggestions:hover {
+.header #suggestions .suggestions:hover {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.2);
 }

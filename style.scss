@@ -92,9 +92,8 @@ hr {
   }
 
   .dex_btn_container {
-  /*   @include randomBorder; */
-    display: flex;
-   /*  flex-direction: column; */
+    @include flexbox($g: 0.5rem);
+    flex-wrap: wrap;
 
     .dex_buttons {
       @include curserPointer;
