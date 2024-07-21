@@ -19,12 +19,17 @@
   </head>
 
   <body onload="init()">
+    
     <header include-html="./assets/templates/header/header.html"></header>
 
-    <main class="main">
+    <menu class="menu">
 
       <div id="btnContainer" class="dex_btn_container"></div>
       
+    </menu>
+
+    <main class="main">
+
       <div class="arrow_down_container">
         <img
           src="./assets/img/arrow_up.png"
@@ -33,7 +38,6 @@
         />
       </div>
 
-      </div>
       <div class="content_container" id="content"></div>
 
       <div class="load_btn_container">
@@ -56,16 +60,13 @@
 
       <div class="loader d_none" id="loader">
         <img src="./assets/img/loader.png" alt="Loading" />
-  
+
         <div>
           <span>loading</span>
           <div class="dot-flashing"></div>
         </div>
       </div>
-
     </main>
-
-    
 
     <footer include-html="./assets/templates/footer/footer.html"></footer>
 
