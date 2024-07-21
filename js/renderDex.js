@@ -17,6 +17,12 @@ async function renderDexRegion(start, end, showLoadMore = false) {
   }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  renderDexButtons();
+  setDefaultActiveButton();
+  renderAll();
+});
+
 function renderDexButtons() {
   const buttons = document.getElementById("btnContainer");
   const regions = [
@@ -29,14 +35,31 @@ function renderDexButtons() {
     { name: "Kalos", handler: "renderKalosDex" },
     { name: "Alola", handler: "renderAlolaDex" },
     { name: "Galar", handler: "renderGalarDex" },
-    { name: "Paldea", handler: "renderPaldeaDex" }
+    { name: "Paldea", handler: "renderPaldeaDex" },
   ];
 
-  buttons.innerHTML = regions.map(region => 
-    `<button class="dex_buttons" onclick="${region.handler}()">${region.name}</button>`
-  ).join('');
+  buttons.innerHTML = regions
+    .map(
+      (region, index) =>
+        `<button class="dex_buttons ${index === 0 ? "active" : ""}" onclick="${
+          region.handler
+        }(); setActiveClass(this);">${region.name}</button>`
+    )
+    .join("");
 }
 
+function setDefaultActiveButton() {
+  const allButton = document.querySelector(".dex_buttons:first-child");
+  allButton.classList.add("active");
+}
+
+function setActiveClass(button) {
+  const current = document.querySelector(".dex_buttons.active");
+  if (current) {
+    current.classList.remove("active");
+  }
+  button.classList.add("active");
+}
 
 /**
  * Renders the first 50 entries of the Pokedex and shows the "Load More" button.

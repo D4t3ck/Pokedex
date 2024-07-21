@@ -16,7 +16,7 @@ async function fetchPkmnData(id) {
   return pkmnData;
 }
 
-/**
+/* *
  * Render Pokémon data from startCount to count.
  * Fetches data in parallel and renders it to the content element.
  */

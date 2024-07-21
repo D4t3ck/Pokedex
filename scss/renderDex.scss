@@ -1,0 +1,25 @@
+@import "../style.scss";
+
+.dex_btn_container {
+  @include flexbox();
+  flex-wrap: wrap;
+  width: 100%;
+
+  .dex_buttons {
+    @include box(7rem, 2rem);
+    border: unset;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background-color: var(--mainColor);
+    color: var(--backgroundColor);
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--mainColorLight);
+    }
+  }
+}
+
+.active {
+  background-color: var(--mainColorLight) !important;
+}

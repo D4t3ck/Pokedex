@@ -76,26 +76,6 @@ hr {
   display: flex;
   width: 100%;
   background-color: var(--mainColor);
-
-  .dex_btn_container {
-    @include flexbox($g: 0.5rem);
-    flex-wrap: wrap;
-    width: 100%;
-
-    .dex_buttons {
-      @include box(7rem, 2rem);
-      border: unset;
-      font-size: 0.95rem;
-      font-weight: 600;
-      background-color: var(--mainColor);
-      color: var(--backgroundColor);
-
-      &:hover {
-        cursor: pointer;
-        background-color: var(--mainColorLight);
-      }
-    }
-  }
 }
 
 .main {
@@ -112,6 +92,7 @@ hr {
     width: 100%;
 
     img {
+      margin-top: 0.5rem;
       margin-left: 2rem;
       rotate: 180deg;
 

@@ -47,28 +47,6 @@ hr {
   width: 100%;
   background-color: var(--mainColor);
 }
-.menu .dex_btn_container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  width: 100%;
-}
-.menu .dex_btn_container .dex_buttons {
-  width: 7rem;
-  height: 2rem;
-  border: unset;
-  font-size: 0.95rem;
-  font-weight: 600;
-  background-color: var(--mainColor);
-  color: var(--backgroundColor);
-}
-.menu .dex_btn_container .dex_buttons:hover {
-  cursor: pointer;
-  background-color: var(--mainColorLight);
-}
 
 .main {
   position: relative;
@@ -82,7 +60,7 @@ hr {
 }
 .main .arrow_down_container {
   position: absolute;
-  top: 0;
+  top: -10;
   right: 0;
   display: flex;
   flex-direction: row;
@@ -131,6 +109,11 @@ hr {
   cursor: pointer;
 }
 
+@media only screen and (max-width: 600px) {
+  .main {
+    padding-top: 3rem !important;
+  }
+}
 .loader {
   display: flex;
   flex-direction: column;
