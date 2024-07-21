@@ -130,3 +130,9 @@ hr {
 .main .arrow_up_container img:hover {
   cursor: pointer;
 }
+
+@media only screen and (max-width: 600px) {
+  .main {
+    padding-top: 3rem !important;
+  }
+}

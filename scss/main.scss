@@ -19,16 +19,13 @@
   box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    /* cursor: pointer; */
     scale: (1.05);
   }
 }
 
 .card_head {
-  /*   @include randomBorder; */
   @include flexbox($jc: space-evenly);
   width: 100%;
-  /* margin-bottom: 0.75rem; */
 
   .pkmn_id {
     font-size: 1.5rem;
