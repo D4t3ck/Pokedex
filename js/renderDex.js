@@ -17,14 +17,25 @@ async function renderDexRegion(start, end, showLoadMore = false) {
   }
 }
 
+/**
+ * Initializes the app when the DOM content has fully loaded.
+ * - Renders the dex buttons.
+ * - Sets the default active button.
+ * - Renders the complete Pokémon data.
+ */
 document.addEventListener("DOMContentLoaded", () => {
   renderDexButtons();
   setDefaultActiveButton();
   renderAll();
 });
 
+/**
+ * Renders the dex buttons for each Pokémon region and adds event handlers.
+ */
 function renderDexButtons() {
   const buttons = document.getElementById("btnContainer");
+
+  // List of Pokémon regions with corresponding render functions.
   const regions = [
     { name: "All", handler: "renderAll" },
     { name: "Kanto", handler: "renderKantoDex" },
@@ -38,6 +49,7 @@ function renderDexButtons() {
     { name: "Paldea", handler: "renderPaldeaDex" },
   ];
 
+  // Create button elements for each region.
   buttons.innerHTML = regions
     .map(
       (region, index) =>
@@ -48,11 +60,18 @@ function renderDexButtons() {
     .join("");
 }
 
+/**
+ * Sets the default active button to the first button in the dex buttons list.
+ */
 function setDefaultActiveButton() {
   const allButton = document.querySelector(".dex_buttons:first-child");
   allButton.classList.add("active");
 }
 
+/**
+ * Sets the given button as active and removes the active class from the previously active button.
+ * @param {HTMLElement} button - The button element to be set as active.
+ */
 function setActiveClass(button) {
   const current = document.querySelector(".dex_buttons.active");
   if (current) {
