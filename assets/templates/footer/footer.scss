@@ -28,7 +28,10 @@
     min-height: 100%;
     width: 100%;
     z-index: 100;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.41);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.9px);
+    -webkit-backdrop-filter: blur(4.9px);
 
     .imprint {
       @include box(80%, 70vh);
@@ -84,6 +87,9 @@
 
 @media only screen and (max-width: 600px) {
   .footer {
+    @include flexbox($fd: column, $g: 1rem);
+    text-align: center;
+
     div:nth-child(3) {
       .imprint {
         width: 100%;
