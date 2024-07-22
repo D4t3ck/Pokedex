@@ -50,6 +50,7 @@ hr {
   gap: 0px;
   flex-wrap: wrap;
   width: 100%;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.4);
 }
 .dex_btn_container .dex_buttons {
   width: 7rem;

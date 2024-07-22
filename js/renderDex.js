@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
 function renderDexButtons() {
   const buttons = document.getElementById("btnContainer");
 
-  // List of Pokémon regions with corresponding render functions.
   const regions = [
     { name: "All", handler: "renderAll" },
     { name: "Kanto", handler: "renderKantoDex" },
@@ -49,7 +48,6 @@ function renderDexButtons() {
     { name: "Paldea", handler: "renderPaldeaDex" },
   ];
 
-  // Create button elements for each region.
   buttons.innerHTML = regions
     .map(
       (region, index) =>
