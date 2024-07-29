@@ -85,9 +85,10 @@
   border-radius: 10px;
   border: 2px solid rgb(0, 0, 0, 0.1);
   box-shadow: 10px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 200ms ease-in-out 40ms;
 
   &:hover {
-    scale: (1.05);
+    transform: scale(1.05);
   }
 
   .card_head {
@@ -160,10 +161,10 @@
       @include box(120px);
       transition: transform 200ms ease-in-out 100ms;
 
-      &:hover {
+      /* &:hover {
         cursor: pointer;
         transform: scale(1.3);
-      }
+      } */
     }
   }
 }
