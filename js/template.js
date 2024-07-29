@@ -6,46 +6,38 @@
  */
 function pkmnCard(pkmnData, i) {
   return /* html */ `
-    <section class="pkmn_card" style="background-color: ${pkmnColor(
-      pkmnData,
-      0
-    )}" >
-      <img class="open_card" onclick="openCard(${i})" src="assets/img/open_card.png" alt="Open Card">
+    <section class="pkmn_card" style="background-color: ${pkmnColor(pkmnData, 0)}">
+      <div class="options_container">
+        <img class="turn_pkmn" onclick="turnPkmn(${i}, event)" title="Turn Pkmn" src="/assets/img/turn_48.png" alt="Turn Pkmn">
+        <img class="open_card" onclick="openCard(${i})" title="Open Card" src="assets/img/open_card.png" alt="Open Card">
+      </div>
+      
       <div class="card_head">
         <div class="pkmn_id">${pkmnId(pkmnData)}</div>
       </div>
-  
+
       <div class="pkmn_info_container">
         <div class="pkmn_info">
-          <span onclick="openCard(${i})" class="pkmn_name">${pkmnName(
-    pkmnData
-  )}</span>
-          <div class="pkmn_type" style="background-color: ${pkmnColor(
-            pkmnData,
-            0
-          )}">${pkmnTypes(pkmnData).primaryType}</div>
-            ${
-              pkmnTypes(pkmnData).secondaryType !== ""
-                ? `<div class="pkmn_type" style="background-color: ${pkmnColor(
-                    pkmnData,
-                    1
-                  )}">${pkmnTypes(pkmnData).secondaryType}</div>`
-                : ""
-            } 
+          <span onclick="openCard(${i})" class="pkmn_name">${pkmnName(pkmnData)}</span>
+          <div class="pkmn_type" style="background-color: ${pkmnColor(pkmnData, 0)}">
+            ${pkmnTypes(pkmnData).primaryType}
+          </div>
+          ${
+            pkmnTypes(pkmnData).secondaryType !== ""
+              ? `<div class="pkmn_type" style="background-color: ${pkmnColor(pkmnData, 1)}">
+                   ${pkmnTypes(pkmnData).secondaryType}
+                 </div>`
+              : ""
+          }
         </div>
-  
-        <img id="frontImg_${i}" class="pkmn_img_front" src="${pkmnImg(
-    pkmnData
-  )}" alt="Pokemon Front Picture" onclick="turnPkmn(${i}, event)" />
-        
-        <img id="backImg_${i}" class="pkmn_img_back d_none" src="${pkmnImgBack(
-    pkmnData
-  )}" alt="Pokemon Back Picture" onclick="turnPkmn(${i}, event)" >
 
+        <img id="frontImg_${i}" class="pkmn_img_front" src="${pkmnImg(pkmnData)}" alt="Pokemon Front Picture" onclick="turnPkmn(${i}, event)">
+        <img id="backImg_${i}" class="pkmn_img_back d_none" src="${pkmnImgBack(pkmnData)}" alt="Pokemon Back Picture" onclick="turnPkmn(${i}, event)">
       </div>
     </section>
   `;
 }
+
 
 /**
  * Generates HTML markup for the detailed view of a Pokémon card.
@@ -55,29 +47,26 @@ function pkmnCard(pkmnData, i) {
  */
 function openDetailCard(currentCard, i) {
   return /* html */ `
-    <section style="background-color: ${pkmnColor(
-      currentCard,
-      0
-    )}" class="detail_container" onclick="doNotClose(event)">
+    <section style="background-color: ${pkmnColor(currentCard, 0)}" class="detail_container" onclick="doNotClose(event)">
       <img class="close" onclick="closeCard()" src="assets/img/close.png" alt="Close">
+      
       <div class="detail_info_container">
         <div class="detail_head">
           <div class="detail_id">${pkmnId(currentCard)}</div>
           <div class="detail_name">${pkmnName(currentCard)}</div>
         </div>
+        
         <div class="type_container">
-          <div class="detail_type" style="background-color: ${pkmnColor(
-            currentCard,
-            0
-          )}">${pkmnTypes(currentCard).primaryType}</div>
-            ${
-              pkmnTypes(currentCard).secondaryType !== ""
-                ? `<div class="detail_type" style="background-color: ${pkmnColor(
-                    currentCard,
-                    1
-                  )}">${pkmnTypes(currentCard).secondaryType}</div>`
-                : ""
-            }
+          <div class="detail_type" style="background-color: ${pkmnColor(currentCard, 0)}">
+            ${pkmnTypes(currentCard).primaryType}
+          </div>
+          ${
+            pkmnTypes(currentCard).secondaryType !== ""
+              ? `<div class="detail_type" style="background-color: ${pkmnColor(currentCard, 1)}">
+                   ${pkmnTypes(currentCard).secondaryType}
+                 </div>`
+              : ""
+          }
           <img class="shiny_btn" src="assets/img/shiny_icon.png" onclick="showShiny(${i})">
         </div>
       </div>
@@ -86,21 +75,17 @@ function openDetailCard(currentCard, i) {
 
       <div class="img_container">
         <div id="arrowLeft" class="${switchLeft}" onclick="switchLeft(${i})">&lt;</div>
-
-        <img id="detailImg_${i}" class="detail_img" src="${pkmnImg2(
-    currentCard
-  )}" alt="Pokemon Image">
-
-        <img id="shinyImg_${i}" class="detail_img d_none" src="${pkmnImgShiny(
-    currentCard
-  )}" alt="Pokemon Shiny Image">
-
+        
+        <img id="detailImg_${i}" class="detail_img" src="${pkmnImg2(currentCard)}" alt="Pokemon Image">
+        
+        <img id="shinyImg_${i}" class="detail_img d_none" src="${pkmnImgShiny(currentCard)}" alt="Pokemon Shiny Image">
+        
         <div id="arrowRight" onclick="switchRight(${i})">&gt;</div>
       </div>
 
       <div class="statsContainer">
-      <canvas id="myChart" ></canvas>
+        <canvas id="myChart"></canvas>
       </div>
-
-    </section>`;
+    </section>
+  `;
 }
