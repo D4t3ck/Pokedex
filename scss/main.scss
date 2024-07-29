@@ -110,7 +110,7 @@
 
     .turn_pkmn {
       @include curserPointer;
-      @include box(1.25rem);
+      @include box(1.2rem);
     }
 
     .open_card {
@@ -160,11 +160,6 @@
     .pkmn_img_back {
       @include box(120px);
       transition: transform 200ms ease-in-out 100ms;
-
-      /* &:hover {
-        cursor: pointer;
-        transform: scale(1.3);
-      } */
     }
   }
 }

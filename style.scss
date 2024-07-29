@@ -22,10 +22,10 @@
   height: $height;
 }
 
-@mixin coverBackground($s: cover, $p: center) {
+@mixin bgCover {
   background-repeat: no-repeat;
-  background-size: $s;
-  background-position: $p;
+  background-size: cover;
+  background-position: center;
 }
 
 @mixin randomBorder($width: 2px) {
