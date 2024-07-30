@@ -1,8 +1,5 @@
-let pkmnDataArray = [];
-let currentCard = [];
 let count = 51;
 let startCount = 1;
-let i = 0;
 
 /**
  * Fetch Pokémon data from the PokéAPI.
@@ -17,7 +14,7 @@ async function fetchPkmnData(id) {
       throw new Error(`HTTP-Fehler! Status: ${response.status}`);
     }
 
-    let pkmnData = await response.json(); // Direkt als JSON analysieren
+    let pkmnData = await response.json();
     return pkmnData;
   } catch (error) {
     console.error(
@@ -26,7 +23,6 @@ async function fetchPkmnData(id) {
     return null;
   }
 }
-
 
 /* *
  * Render Pokémon data from startCount to count.
@@ -78,7 +74,6 @@ async function renderDex(startCount, count) {
 async function openCard(i) {
   let card = document.getElementById("detailCard");
   card.classList.remove("d_none");
-  showLoader();
   setModalState(true);
 
   try {
@@ -93,7 +88,6 @@ async function openCard(i) {
       renderChart();
       stopSwitchLeft(i);
       stopSwitchRight(i);
-      hideLoader();
     });
   } catch (error) {
     console.error("Error fetching Pokémon data:", error);
@@ -117,6 +111,9 @@ async function loadMore() {
   scrollDown();
 }
 
+/**
+ * Clears content container.
+ */
 function clearContent() {
   document.getElementById("content").innerHTML = "";
 }
