@@ -2,7 +2,7 @@
  * Sets up the search functionality.
  */
 function searchForm() {
-  const form = document.querySelector("form");
+  const form = document.getElementById("searchForm");
   if (form) {
     form.addEventListener("submit", function (event) {
       event.preventDefault();
@@ -86,6 +86,11 @@ function toggleInputVisibility(input) {
 async function monitorInput() {
   const searchInput = document.getElementById("search");
   const suggestionsContainer = document.getElementById("suggestions");
+
+  if (!searchInput || !suggestionsContainer) {
+    console.error("Search input or suggestions container not found.");
+    return;
+  }
 
   searchInput.addEventListener("input", handleInput);
 

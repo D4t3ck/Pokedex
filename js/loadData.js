@@ -11,9 +11,24 @@ let i = 0;
  */
 async function fetchPkmnData(id) {
   let url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-  let response = await fetch(url);
-  let pkmnData = await response.json();
-  return pkmnData;
+  try {
+    let response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    let text = await response.text();
+    if (text.trim() === "") {
+      throw new Error(`Leere Antwort für ID ${id}`);
+    }
+    let pkmnData = JSON.parse(text);
+    return pkmnData;
+  } catch (error) {
+    console.error(
+      `Fehler beim Abrufen oder Verarbeiten der Daten für ID ${id}: ${error.message}`
+    );
+    return null;
+  }
 }
 
 /* *
@@ -29,9 +44,12 @@ async function renderPkmnData() {
   }
 
   let pkmnDataArray = await Promise.all(promises);
+  pkmnDataArray = pkmnDataArray.filter((data) => data !== null);
 
   pkmnDataArray.forEach((pkmnData, index) => {
-    content.innerHTML += pkmnCard(pkmnData, startCount + index);
+    if (pkmnData) {
+      content.innerHTML += pkmnCard(pkmnData, startCount + index);
+    }
   });
 }
 
@@ -43,13 +61,13 @@ async function renderPkmnData() {
  */
 async function renderDex(startCount, count) {
   let content = document.getElementById("content");
-
   let promises = [];
   for (let i = startCount; i < count; i++) {
     promises.push(fetchPkmnData(i));
   }
 
   let pkmnDataArray = await Promise.all(promises);
+  pkmnDataArray = pkmnDataArray.filter((data) => data !== null);
 
   pkmnDataArray.forEach((pkmnData, index) => {
     content.innerHTML += pkmnCard(pkmnData, startCount + index);
@@ -174,9 +192,12 @@ let pkmnName = (pkmnData) => {
  * @returns {string} The color associated with the Pokémon type.
  */
 let pkmnColor = (pkmnData, typeNumber) => {
-  let type = pkmnData.types[typeNumber]
-    ? pkmnData.types[typeNumber].type.name
-    : "";
+  if (!pkmnData || !pkmnData.types || !pkmnData.types[typeNumber]) {
+    console.error("Fehler: Ungültige Pokémon-Daten oder Typen");
+    return "#CCCCCC"; // Rückfallfarbe
+  }
+
+  let type = pkmnData.types[typeNumber].type.name;
   let backgroundColor = typeColors[type] || "#CCCCCC";
   return backgroundColor;
 };

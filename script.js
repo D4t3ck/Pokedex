@@ -6,11 +6,15 @@ async function init() {
   showLoader();
   includeHTML();
   await renderPkmnData();
-  searchForm();
-  monitorInput();
+  setTimeout(() => {
+    searchForm();
+    monitorInput();
+  }, 100);
   renderDexButtons();
   hideLoader();
 }
+
+document.addEventListener("DOMContentLoaded", init);
 
 /**
  * Sets the state of the modal.
