@@ -14,14 +14,10 @@ async function fetchPkmnData(id) {
   try {
     let response = await fetch(url);
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      throw new Error(`HTTP-Fehler! Status: ${response.status}`);
     }
 
-    let text = await response.text();
-    if (text.trim() === "") {
-      throw new Error(`Leere Antwort für ID ${id}`);
-    }
-    let pkmnData = JSON.parse(text);
+    let pkmnData = await response.json(); // Direkt als JSON analysieren
     return pkmnData;
   } catch (error) {
     console.error(
@@ -30,6 +26,7 @@ async function fetchPkmnData(id) {
     return null;
   }
 }
+
 
 /* *
  * Render Pokémon data from startCount to count.

@@ -10,7 +10,6 @@ async function init() {
     searchForm();
     monitorInput();
   }, 100);
-  renderDexButtons();
   hideLoader();
 }
 
