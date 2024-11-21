@@ -7,7 +7,11 @@
  */
 async function renderDexRegion(start, end, showLoadMore = false) {
   showLoader();
-  clearContent();
+
+  if (!isLoadingMore) {
+    clearContent();
+  }
+
   await renderDex(start, end);
   hideLoader();
   if (showLoadMore) {
@@ -23,11 +27,11 @@ async function renderDexRegion(start, end, showLoadMore = false) {
  * - Sets the default active button.
  * - Renders the complete Pokémon data.
  */
-document.addEventListener("DOMContentLoaded", () => {
+/* document.addEventListener("DOMContentLoaded", () => {
   renderDexButtons();
   setDefaultActiveButton();
   renderAll();
-});
+}); */
 
 /**
  * Renders the dex buttons for each Pokémon region and adds event handlers.

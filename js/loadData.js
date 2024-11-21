@@ -1,5 +1,7 @@
 let count = 51;
 let startCount = 1;
+let isInitialRender = false;
+let isLoadingMore = false;
 
 /**
  * Fetch Pokémon data from the PokéAPI.
@@ -33,7 +35,6 @@ async function fetchPkmnData(id) {
  */
 async function renderPkmnData() {
   const content = document.getElementById("content");
-
   const promises = [];
   for (let i = startCount; i < count; i++) {
     promises.push(fetchPkmnData(i));
@@ -41,14 +42,13 @@ async function renderPkmnData() {
 
   try {
     let pkmnDataArray = await Promise.all(promises);
-
     pkmnDataArray = pkmnDataArray.filter((data) => data !== null);
 
     const htmlFragments = pkmnDataArray.map((pkmnData, index) => {
       return pkmnCard(pkmnData, startCount + index);
     });
 
-    content.innerHTML = htmlFragments.join("");
+    content.insertAdjacentHTML("beforeend", htmlFragments.join(""));
   } catch (error) {
     console.error("An error occurred:", error);
   }
@@ -116,6 +116,15 @@ async function loadMore() {
   startCount += 50;
   await renderPkmnData();
   hideLoader();
+  scrollDown();
+}
+
+async function loadMore() {
+  isLoadingMore = true;
+  startCount = count;
+  count += 50;
+  await renderPkmnData();
+  isLoadingMore = false;
   scrollDown();
 }
 

@@ -5,7 +5,13 @@
 async function init() {
   showLoader();
   includeHTML();
-  await renderPkmnData();
+  renderDexButtons();
+  setDefaultActiveButton();
+
+  if (!isInitialRender) {
+    await renderAll();
+  }
+
   setTimeout(() => {
     searchForm();
     monitorInput();
