@@ -52,16 +52,10 @@ Follow these steps to set up and run the project locally:
    ```
    http://localhost:3000
    ```
-
-## Usage
-
-1. Enter the name or ID of a Pokémon in the search bar.
-2. Browse through the detailed information displayed, including stats, abilities, and type.
-3. Click on any Pokémon type to see related Pokémon.
-
+   
 ## Built With
 
-- **React**: For building the user interface.
+- **JavaScript**: For building the user interface.
 - **PokéAPI**: For fetching Pokémon data.
 - **CSS**: For styling the application.
 
